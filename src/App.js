@@ -1,36 +1,23 @@
-import { useEffect,useState } from 'react';
-import ElevCard from './ElevCard';
+import { Route, Routes } from "react-router-dom";
 
-import './App.css';
-const API_URL ="/APL-app/readdata.php?hash=tt&anvnamn=stefan&elever";
-function App() {
-  const [elever, setElever ] = useState([]);
-  const sM = async () => { 
-    const response = await fetch(`${API_URL}`);
-    const data = await response.json();
-    setElever(data.data);
-  }
+import StartupPage from "./pages/StartupPage";
+import EleverPage from "./pages/Elever";
+import ForetagPage from "./pages/Foretag";
+import HandledarePage from "./pages/Handledare";
+import PerioderPage from "./pages/Perioder";
+import MainNavigation from "./components/layout/MainNavigation";
 
-  useEffect(() => {
-    sM();
-  },[]);
-  return (
-    <div>
-    {
-      elever?.length > 0
-      ? (
-        <div className='elev'>
-          {elever.map((elev) => (
-            <ElevCard elev={elev}/>
-          ))}
-      </div>
-  
-      ) : (
-        <div><h2>no movies</h2></div>
-      )
-    }
-    </div>
-
-  );
+function App(){
+    return <div>
+        <MainNavigation />
+        <Routes>
+            <Route path="/" element ={<StartupPage />} />
+            <Route path="/Elever" element ={<EleverPage />} />
+            <Route path="/Foretag" element ={<ForetagPage />} />
+            <Route path="/Handledare" element ={<HandledarePage />} />
+            <Route path="/Perioder" element ={<PerioderPage />} />
+        </Routes>
+    </div>;
 }
+
 export default App;
