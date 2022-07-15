@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import HandledareCard from "../components/HandledareCard";
 
 const API_URL ="/APL-app/readdata.php?hash=tt&anvnamn=stefan&handledare";
 
-function HandledarePage(){
+function VisaHandledarePage(){
+  let navigate = useNavigate();
     const [handledare, setHandledare ] = useState([]);
     const sM = async () => { 
       const response = await fetch(`${API_URL}`);
@@ -21,6 +23,8 @@ function HandledarePage(){
     return (
         <div className="listVy w100">
                     <h1 className="header"> Handledarlista </h1>
+                    <button onClick={() => navigate("/Create", { state: { typ:'Handledare'} })}>Ny handledare</button>
+
     {
       handledare?.length > 0
       ? (
@@ -39,4 +43,4 @@ function HandledarePage(){
     )
 }
 
-export default HandledarePage;
+export default VisaHandledarePage;

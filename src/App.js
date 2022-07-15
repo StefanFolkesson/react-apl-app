@@ -1,12 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 
 import StartupPage from "./pages/StartupPage";
-import EleverPage from "./pages/Elever";
-import ForetagPage from "./pages/Foretag";
-import HandledarePage from "./pages/Handledare";
-import PerioderPage from "./pages/Perioder";
+import VisaEleverPage from "./pages/VisaElever";
+import VisaForetagPage from "./pages/VisaForetag";
+import VisaHandledarePage from "./pages/VisaHandledare";
+import VisaPerioderPage from "./pages/VisaPerioder";
 import MainNavigation from "./components/layout/MainNavigation";
-import EditElevPage from "./pages/Editelev";
+import EditElevCard from "./components/EditElevCard";
+import EditForetagCard from "./components/EditForetagCard";
+import EditHandledareCard from "./components/EditHandledareCard";
+import EditPeriodCard from "./components/EditPeriodCard";
 import DeletePage from "./pages/Delete";
 import CreatePage from "./pages/Create";
 import { useEffect } from "react";
@@ -28,13 +31,16 @@ function App(){
         <MainNavigation />
         <Routes>
             <Route path="/" element ={<StartupPage />} />
-            <Route path="/Elever" element ={<EleverPage />} />
-            <Route path="/EditElev" element ={<EditElevPage />} />
+            <Route path="/Elever" element ={<VisaEleverPage />} />
             <Route path="/Delete" element ={<DeletePage />} />
-            <Route path="/Foretag" element ={<ForetagPage />} />
-            <Route path="/Handledare" element ={<HandledarePage />} />
-            <Route path="/Perioder" element ={<PerioderPage />} />
+            <Route path="/Foretag" element ={<VisaForetagPage />} />
+            <Route path="/Handledare" element ={<VisaHandledarePage />} />
+            <Route path="/Perioder" element ={<VisaPerioderPage />} />
             <Route path="/Create" element={<CreatePage />} />
+            <Route path="/EditElev" element ={<EditElevCard />} />
+            <Route path="/EditForetag" element ={<EditForetagCard />} />
+            <Route path="/EditHandledare" element ={<EditHandledareCard />} />
+            <Route path="/EditPeriod" element ={<EditPeriodCard />} />
         </Routes>
     </div>;
 }

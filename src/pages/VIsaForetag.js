@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ForetagCard from "../components/ForetagCard";
 
 const API_URL ="/APL-app/readdata.php?hash=tt&anvnamn=stefan&arbetsplatser";
 
-function ForetagPage(){
+function VisaForetagPage(){
+  let navigate= useNavigate();
     const [ftg, setftg ] = useState([]);
     const sM = async () => { 
       const response = await fetch(`${API_URL}`);
       const data = await response.json();
       setftg(data.data);
     }
+
     useEffect(() => {
       sM();
     },[]);
@@ -17,6 +20,7 @@ function ForetagPage(){
     return (
       <div className="listVy w100">
                   <h1 className="header"> Företagslista</h1>
+                  <button onClick={() => navigate("/Create", { state: { typ:'Foretag'} })}>Nytt företag</button>
     {
       ftg?.length > 0
       ? (
@@ -35,4 +39,4 @@ function ForetagPage(){
     )
 }
 
-export default ForetagPage;
+export default VisaForetagPage;

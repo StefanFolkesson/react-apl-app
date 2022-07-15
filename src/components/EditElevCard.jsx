@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 
-function EditElevPage(){
+function EditElevCard(){
   let navigate = useNavigate();
   const { state } = useLocation();
   const elev = state.elev;
@@ -59,4 +59,4 @@ function EditElevPage(){
 
         </div>)}
 
-export default EditElevPage;
+export default EditElevCard;

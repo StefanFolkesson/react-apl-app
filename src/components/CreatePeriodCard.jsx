@@ -1,8 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const CreateElev = () => {
-
+const CreatePeriod = () => {
 
     // Fel kod!!!
     let navigate = useNavigate();
@@ -16,5 +15,4 @@ const CreateElev = () => {
         </div>
     ); 
 }
-
-export default CreateElev;
+export default CreatePeriod;

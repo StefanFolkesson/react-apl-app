@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const CreateElev = () => {
+const CreateForetag = () => {
 
 
     // Fel kod!!!
@@ -15,6 +15,7 @@ const CreateElev = () => {
             <span className='epost'>asd</span>
         </div>
     ); 
+
 }
 
-export default CreateElev;
+export default CreateForetag;

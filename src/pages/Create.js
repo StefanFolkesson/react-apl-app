@@ -1,5 +1,8 @@
 import { useLocation } from "react-router-dom";
 import CreateElev from "../components/CreateElevCard";
+import CreateForetag from "../components/CreateForetagCard";
+import CreatePeriod from "../components/CreatePeriodCard";
+import CreateHandledare from "../components/CreateHandledareCard";
 
 
 function CreatePage(){

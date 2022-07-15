@@ -15,9 +15,17 @@ function DeletePage(){
   },[]);
 
   const sendit = async () => { 
-
-    if(typ=='Elever'){
+    switch (typ) {
+      case 'Elever':
         str="&delelev&pnr="+id;
+      case 'Handledare':
+        str="&delperiod&periodnamn="+id;
+      case 'Foretag':
+        str="&delforetag&foretagsnamn="+id;
+      case 'Perioder':
+        str="&delhandledare&anvandarnamn="+id;
+      case 'Placering':
+          str="&delplacering&id="+id;
       }
     const response = await fetch(`${API_URL+str}`);
     const data = await response.json();

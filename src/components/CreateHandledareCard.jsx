@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const CreateElev = () => {
+const CreateHandledare = () => {
 
 
     // Fel kod!!!
@@ -16,5 +16,4 @@ const CreateElev = () => {
         </div>
     ); 
 }
-
-export default CreateElev;
+export default CreateHandledare;

@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ElevCard from "../components/ElevCard";
 
 const API_URL ="/APL-app/readdata.php?hash=tt&anvnamn=stefan&elever";
-function EleverPage(props){
+function VisaEleverPage(props){
+  let navigate = useNavigate();
     const [elever, setElever ] = useState([]);
     const sM = async () => { 
       const response = await fetch(`${API_URL}`);
@@ -12,11 +14,10 @@ function EleverPage(props){
     useEffect(() => {
       sM();
     },[]);
-
     return (
         <div className="listVy w100">
             <h1 className="header"> Elevlista </h1>
-            <button onClick={() => navigate("/Create", { state: { typ:Elever} })}>Ny Elev</button>
+            <button onClick={() => navigate("/Create", { state: { typ:'Elever'} })}>Ny Elev</button>
     {
       elever?.length > 0
       ? (
@@ -35,4 +36,4 @@ function EleverPage(props){
     )
 }
 
-export default EleverPage;
+export default VisaEleverPage;
