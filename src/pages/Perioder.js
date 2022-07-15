@@ -14,12 +14,9 @@ function PerioderPage(){
       sM();
     },[]);
   
-
-
-
-
     return (
-        <div>
+        <div className="listVy w100">
+                    <h1 className="header"> Periodlista</h1>
     {
       perioder?.length > 0
       ? (

@@ -1,9 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const ElevCard = ({elev}) => {
-    let navigate = useNavigate();
-    const originElev = JSON.parse(JSON.stringify(elev));
+const CreateElev = ({elev}) => {
 
     return ( 
         <div className='data' >
@@ -18,4 +16,4 @@ const ElevCard = ({elev}) => {
     ); 
 }
 
-export default ElevCard;
+export default CreateElev;

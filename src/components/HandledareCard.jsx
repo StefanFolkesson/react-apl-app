@@ -2,7 +2,7 @@ import React from "react";
 
 const HandledareCard = ({handled}) => {
     return ( 
-        <div>
+        <div className="data">
             <span className='id'>{handled.id}</span>
             <span className='admin'>{handled.admin}</span>
             <span className='anvnamn'>{handled.anvnamn}</span>

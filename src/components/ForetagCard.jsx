@@ -2,7 +2,7 @@ import React from "react";
 
 const ForetagCard = ({foretag}) => {
     return ( 
-        <div>
+        <div className="data">
             <span className='foretagsnamn'>{foretag.foretagsnamn}</span>
             <span className='kontaktnummer'>{foretag.kontaktnummer}</span>
             <span className='epost'>{foretag.epost}</span>

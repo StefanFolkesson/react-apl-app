@@ -5,7 +5,7 @@ import classes from './MainNavigation.module.css';
 function MainNavigation(){
     return (
         <header className={classes.header}>
-            <span className={classes.logo}> Vad vill du göra?</span>
+            <span className={classes.logo}> <a href="/client-apl-app">Vad vill du göra?</a></span>
             <nav>
                 <ul>
                     <li>
@@ -31,3 +31,4 @@ function MainNavigation(){
 }
 
 export default MainNavigation;
+

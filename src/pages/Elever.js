@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import ElevCard from "../ElevCard";
+import ElevCard from "../components/ElevCard";
 
 const API_URL ="/APL-app/readdata.php?hash=tt&anvnamn=stefan&elever";
-
-function EleverPage(){
+function EleverPage(props){
     const [elever, setElever ] = useState([]);
     const sM = async () => { 
       const response = await fetch(`${API_URL}`);
@@ -13,17 +12,15 @@ function EleverPage(){
     useEffect(() => {
       sM();
     },[]);
-  
-
-
-
 
     return (
-        <div>
+        <div className="listVy w100">
+            <h1 className="header"> Elevlista </h1>
+            <button onClick={() => navigate("/Create", { state: { typ:Elever} })}>Ny Elev</button>
     {
       elever?.length > 0
       ? (
-        <div className='elev'>
+        <div className='data'>
           {elever.map((elev) => (
             <ElevCard elev={elev}/>
           ))}

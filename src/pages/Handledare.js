@@ -19,7 +19,8 @@ function HandledarePage(){
 
 
     return (
-        <div>
+        <div className="listVy w100">
+                    <h1 className="header"> Handledarlista </h1>
     {
       handledare?.length > 0
       ? (

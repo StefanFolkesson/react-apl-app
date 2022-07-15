@@ -1,11 +1,11 @@
 import React from "react";
 
-const PeriodCard = ({peroid}) => {
+const PeriodCard = ({period}) => {
     return ( 
-        <div>
-            <span className='periodnamn'>{peroid.periodnamn}</span>
-            <span className='start'>{peroid.start}</span>
-            <span className='slut'>{peroid.slut}</span>
+        <div className="data">
+            <span className='periodnamn'>{period.periodnamn}</span>
+            <span className='start'>{period.start}</span>
+            <span className='slut'>{period.slut}</span>
         </div>
     ); 
 }

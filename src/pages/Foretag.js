@@ -15,7 +15,8 @@ function ForetagPage(){
     },[]);
   
     return (
-        <div>
+      <div className="listVy w100">
+                  <h1 className="header"> Företagslista</h1>
     {
       ftg?.length > 0
       ? (
