@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import HandledareCard from "../components/HandledareCard";
 
-const API_URL ="/APL-app/readdata.php?hash=tt&anvnamn=stefan&handledare";
+const API_URL ="/APL-app/readdata.php?hash=tt&loginnamn=stefan&handledare";
 
 function VisaHandledarePage(){
+  const { state } = useLocation();
+  let error="";
+  if(state!=null){
+    error=state.error;
+  }
+
   let navigate = useNavigate();
     const [handledare, setHandledare ] = useState([]);
     const sM = async () => { 
@@ -22,6 +28,7 @@ function VisaHandledarePage(){
 
     return (
         <div className="listVy w100">
+                     <div className="error">{error}</div>
                     <h1 className="header"> Handledarlista </h1>
                     <button onClick={() => navigate("/Create", { state: { typ:'Handledare'} })}>Ny handledare</button>
 
@@ -30,7 +37,7 @@ function VisaHandledarePage(){
       ? (
         <div className='period'>
           {handledare.map((handled) => (
-            <HandledareCard handled={handled}/>
+            <HandledareCard handledare={handled}/>
           ))}
       </div>
   

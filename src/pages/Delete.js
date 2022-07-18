@@ -7,37 +7,50 @@ function DeletePage(){
   const { state } = useLocation();
   const id = state.id;
   const typ = state.typ;
-  let str="";
-  const API_URL ="/APL-app/deletedata.php?hash=tt&anvnamn=stefan";
+  const API_URL ="/APL-app/deletedata.php?hash=tt&loginnamn=stefan";
 
   useEffect(() => {
-    sendit();
+    sendit(typ);
   },[]);
 
-  const sendit = async () => { 
+  const sendit = async (typ) => { 
+    console.log(typ);
+    let str;
     switch (typ) {
       case 'Elever':
         str="&delelev&pnr="+id;
-      case 'Handledare':
+        break;
+      case 'Perioder':
         str="&delperiod&periodnamn="+id;
+        break;
       case 'Foretag':
         str="&delforetag&foretagsnamn="+id;
-      case 'Perioder':
-        str="&delhandledare&anvandarnamn="+id;
+        break;
+      case 'Handledare':
+        str="&delhandledare&anvnamn="+id;
+        break;
       case 'Placering':
           str="&delplacering&id="+id;
-      }
+          break;
+        }
     const response = await fetch(`${API_URL+str}`);
     const data = await response.json();
+    console.log(str);
+    console.log("status: "+data.status);
     if(data.status=="0"){
         navigate('/'+typ);
     } else if(data.status=="1") {
+        navigate('/'+typ, { state: { error: 'Element isnt deletable!'} });
         // skall poppa upp ett felmeddelande. och stanna kvar... 
     } else if(data.status=="2") {
         navigate('/Login');
     }
+    else {
+      navigate('/'+typ, { state: { error: 'Something is really wrong!'} });
+
+    }
   }
-  return <div>Element isnt deletable</div>
+  return <div></div>
 }
 
 export default DeletePage;

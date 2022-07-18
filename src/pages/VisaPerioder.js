@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import PeriodCard from "../components/PeriodCard";
 
-const API_URL ="/APL-app/readdata.php?hash=tt&anvnamn=stefan&perioder";
+const API_URL ="/APL-app/readdata.php?hash=tt&loginnamn=stefan&perioder";
 
 function VisaPerioderPage(){
+  const { state } = useLocation();
+  let error="";
+  if(state!=null){
+    error=state.error;
+  }
   let navigate = useNavigate();
     const [perioder, setPerioder ] = useState([]);
     const sM = async () => { 
@@ -18,7 +23,8 @@ function VisaPerioderPage(){
   
     return (
         <div className="listVy w100">
-                    <h1 className="header"> Periodlista</h1>
+                     <div className="error">{error}</div>
+                                         <h1 className="header"> Periodlista</h1>
                     <button onClick={() => navigate("/Create", { state: { typ:'Period'} })}>Nytt Period</button>
 
     {

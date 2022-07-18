@@ -15,7 +15,7 @@ function CreatePage(){
         return <CreateHandledare />
     case 'Foretag':
         return <CreateForetag />
-    case 'Perioder':
+    case 'Period':
         return <CreatePeriod />
   }
 }

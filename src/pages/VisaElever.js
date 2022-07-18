@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ElevCard from "../components/ElevCard";
 
-const API_URL ="/APL-app/readdata.php?hash=tt&anvnamn=stefan&elever";
+const API_URL ="/APL-app/readdata.php?hash=tt&loginnamn=stefan&elever";
 function VisaEleverPage(props){
+  const { state } = useLocation();
+  let error="";
+  if(state!=null){
+    error=state.error;
+  }
   let navigate = useNavigate();
     const [elever, setElever ] = useState([]);
     const sM = async () => { 
@@ -16,6 +21,7 @@ function VisaEleverPage(props){
     },[]);
     return (
         <div className="listVy w100">
+            <div className="error">{error}</div>
             <h1 className="header"> Elevlista </h1>
             <button onClick={() => navigate("/Create", { state: { typ:'Elever'} })}>Ny Elev</button>
     {

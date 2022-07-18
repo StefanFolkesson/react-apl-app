@@ -18,7 +18,7 @@ function EditElevCard(){
 
   const sendData = () => {
     // I eelevchanged har vi ändringar i originElev har vi orginal.
-    const API_URL ="/APL-app/editdata.php?hash=tt&anvnamn=stefan&editelev&originpnr="+originElev.pnr;
+    const API_URL ="/APL-app/editdata.php?hash=tt&loginnamn=stefan&editelev&originpnr="+originElev.pnr;
     let str="";
     for (const key in elevChanged) {
         if(key!=0){
