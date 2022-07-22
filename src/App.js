@@ -13,22 +13,32 @@ import EditPeriodCard from "./components/EditPeriodCard";
 import DeletePage from "./pages/Delete";
 import CreatePage from "./pages/Create";
 import { useEffect } from "react";
+import Login from "./pages/LoginPage";
+import { loadLS, saveLS } from "./components/functions";
+
 
 function App(){
-    localStorage.setItem('user',"stefan");
-    localStorage.setItem('password',"stefan");
-    localStorage.setItem('hash',"tt");
-    const API_URL ="/APL-app/login.php?anv=stefan&pass=stefan";
-    const login = async () => { 
-        const response = await fetch(`${API_URL}`);
-        //const data = await response.json();
-      }
+    console.log("Cookie : "+document.cookie);
+//    saveLS('user',null);
+    let user=loadLS('user');
+    console.log("user : "+user);
+    let hash=loadLS('key');
+    console.log("Cookie : "+document.cookie);
+//    localStorage.setItem('user',"stefan");
+ //   localStorage.setItem('password',"stefan");
+ //   localStorage.setItem('hash',"tt");
+ //   const API_URL ="/APL-app/login.php?anv=".user."&pass=stefan";
+ //   const login = async () => { 
+ //       const response = await fetch(`${API_URL}`);
+  //      //const data = await response.json();
+//      }
       
-    useEffect(() => {
-        login();
-    },[]);
+ //   useEffect(() => {
+  //      login();
+//    },[]);
     return <div>
-        <MainNavigation />
+        {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
+        User {user}
         <Routes>
             <Route path="/" element ={<StartupPage />} />
             <Route path="/Elever" element ={<VisaEleverPage />} />
@@ -41,6 +51,7 @@ function App(){
             <Route path="/EditForetag" element ={<EditForetagCard />} />
             <Route path="/EditHandledare" element ={<EditHandledareCard />} />
             <Route path="/EditPeriod" element ={<EditPeriodCard />} />
+            <Route path="/Login" element ={<Login />} />
         </Routes>
     </div>;
 }

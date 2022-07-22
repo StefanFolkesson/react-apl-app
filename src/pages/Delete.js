@@ -1,14 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import { loadLS } from "../components/functions";
 
 function DeletePage(){
   let navigate = useNavigate();
   const { state } = useLocation();
   const id = state.id;
   const typ = state.typ;
-  const API_URL ="/APL-app/deletedata.php?hash=tt&loginnamn=stefan";
-
+  const [user,setUser] = useState(loadLS('user'));
+  const [hash,setHash] = useState(loadLS('hash'));
+  const API_URL ="/APL-app/deletedata.php?hash="+hash+"&loginnamn="+user;
   useEffect(() => {
     sendit(typ);
   },[]);

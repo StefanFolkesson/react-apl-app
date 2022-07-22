@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { checkData } from './functions';
 import { useNavigate } from "react-router-dom";
+import { loadLS } from "./functions";
 
 const CreateForetag = () => {
     let navigate = useNavigate();
     let dataarr=["foretagsnamn","kontaktnummer","epost"];
     const [ftg, setFtg] = useState([]);
+    const [user,setUser] = useState(loadLS('user'));
+    const [hash,setHash] = useState(loadLS('hash'));
+    const API_URL ="/APL-app/createdata.php?hash="+hash+"&loginnamn="+user+"&nyttforetag";
 
 
     const handleChange = (e) => {
@@ -28,9 +32,10 @@ const CreateForetag = () => {
         }
     }
     const sendData = () => {
+        console.log(JSON.stringify(ftg));
+        console.log(JSON.stringify(dataarr));
         let answer=checkData(ftg,dataarr);
         if(answer == true){
-            const API_URL ="/APL-app/createdata.php?hash=tt&loginnamn=stefan&nyttforetag";
             let str="";
             dataarr.forEach(element => {
                 str+="&"+element;

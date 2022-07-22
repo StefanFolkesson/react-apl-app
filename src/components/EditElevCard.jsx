@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { loadLS } from "./functions";
 
 
 function EditElevCard(){
@@ -8,6 +9,10 @@ function EditElevCard(){
   const elev = state.elev;
   const originElev = state.originElev;
   const [elevChanged, setElevChanged ] = useState([elev]);
+  const [user,setUser] = useState(loadLS('user'));
+  const [hash,setHash] = useState(loadLS('hash'));
+  const API_URL ="/APL-app/editdata.php?hash="+hash+"&loginnamn="+user+"&editelev&originpnr="+originElev.pnr;
+
   const handleChange = (e) => {
     elev[e.target.id]=e.target.value;
     setElevChanged(elevChanged => ({
@@ -18,7 +23,6 @@ function EditElevCard(){
 
   const sendData = () => {
     // I eelevchanged har vi ändringar i originElev har vi orginal.
-    const API_URL ="/APL-app/editdata.php?hash=tt&loginnamn=stefan&editelev&originpnr="+originElev.pnr;
     let str="";
     for (const key in elevChanged) {
         if(key!=0){

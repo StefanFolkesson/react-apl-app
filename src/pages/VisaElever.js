@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ElevCard from "../components/ElevCard";
+import { loadLS } from "../components/functions";
 
-const API_URL ="/APL-app/readdata.php?hash=tt&loginnamn=stefan&elever";
+
+
 function VisaEleverPage(props){
   const { state } = useLocation();
+  const [user,setUser] = useState(loadLS('user'));
+  const [hash,setHash] = useState(loadLS('hash'));
+  const API_URL ="/APL-app/readdata.php?hash="+hash+"&loginnamn="+user+"&elever";
   let error="";
   if(state!=null){
     error=state.error;

@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { checkData } from './functions';
 import { useNavigate } from "react-router-dom";
+import { loadLS } from "./functions";
 
 const CreatePeriod = () => {
     let navigate = useNavigate();
     let dataarr=['periodnamn','start','slut'];
     const [period, setPeriod] = useState([]);
+    const [user,setUser] = useState(loadLS('user'));
+    const [hash,setHash] = useState(loadLS('hash'));
+    const API_URL ="/APL-app/createdata.php?hash="+hash+"&loginnamn="+user+"&nyperiod";
 
 
     const handleChange = (e) => {
@@ -30,7 +34,6 @@ const CreatePeriod = () => {
     const sendData = () => {
         let answer=checkData(period,dataarr);
         if(answer == true){
-            const API_URL ="/APL-app/createdata.php?hash=tt&loginnamn=stefan&nyperiod";
             let str="";
             dataarr.forEach(element => {
                 str+="&"+element;

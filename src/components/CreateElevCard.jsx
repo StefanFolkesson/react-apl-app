@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { loadLS } from './functions';
+import UserProfile from './UserProfile';
 
 const CreateElev = () => {
-    let navigate = useNavigate();
+    let navigate = useNavigate()
     const [elev, setElev] = useState([]);
-
+    const [user,setUser] = useState(loadLS('user'));
+    const [hash,setHash] = useState(loadLS('hash'));
+    const API_URL ="/APL-app/createdata.php?hash="+hash+"&loginnamn="+user+"&nyelev";
 
     const handleChange = (e) => {
         let localelev = [];
@@ -32,7 +36,6 @@ const CreateElev = () => {
             let answer=checkData(elev,dataarr);
             console.log(answer);
             if(answer == true){
-            const API_URL ="/APL-app/createdata.php?hash=tt&loginnamn=stefan&nyelev";
             let str="";
             dataarr.forEach(element => {
                 str+="&"+element;

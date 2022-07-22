@@ -1,11 +1,14 @@
 import { useEffect,  useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ForetagCard from "../components/ForetagCard";
+import { loadLS } from "../components/functions";
 
-const API_URL ="/APL-app/readdata.php?hash=tt&loginnamn=stefan&arbetsplatser";
 
 function VisaForetagPage(){
   let navigate= useNavigate();
+  const [user,setUser] = useState(loadLS('user'));
+  const [hash,setHash] = useState(loadLS('hash'));
+  const API_URL ="/APL-app/readdata.php?hash="+hash+"&loginnamn="+user+"&arbetsplatser";
   const { state } = useLocation();
   let error="";
   if(state!=null){

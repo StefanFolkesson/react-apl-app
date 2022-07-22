@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { loadLS } from "./functions";
 
 
 const EditPeriod = () => {
@@ -9,6 +10,10 @@ const EditPeriod = () => {
     const period = state.period;
     const periodOrigin = state.periodOrigin;
     const [periodChanged, setPeriodChanged ] = useState([period]);
+    const [user,setUser] = useState(loadLS('user'));
+    const [hash,setHash] = useState(loadLS('hash'));
+    const API_URL ="/APL-app/editdata.php?hash="+hash+"&loginnamn="+user+"&editperiod&periodnamn="+periodOrigin.periodnamn;
+    
     const handleChange = (e) => {
         period[e.target.id]=e.target.value;
         setPeriodChanged(periodChanged => ({
@@ -18,7 +23,6 @@ const EditPeriod = () => {
     }
     const sendData = () => {
         // I xxxchanged har vi ändringar i xxxOrigin har vi orginal.
-        const API_URL ="/APL-app/editdata.php?hash=tt&loginnamn=stefan&editperiod&periodnamn="+periodOrigin.periodnamn;
         let str="";
         for (const key in periodChanged) {
             if(key!=0){

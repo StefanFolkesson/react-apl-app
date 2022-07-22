@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import { checkData } from './functions';
 import { useNavigate } from "react-router-dom";
+import { loadLS } from "./functions";
 
 const CreateHandledare = () => {
     let navigate = useNavigate();
     let dataarr=['anvnamn','losenord','fnamn','enamn','foretagid'];
     const [handledare, setHandledare] = useState([]);
+    const [user,setUser] = useState(loadLS('user'));
+    const [hash,setHash] = useState(loadLS('hash'));
+    const API_URL ="/APL-app/createdata.php?hash="+hash+"&loginnamn="+user+"&nyhandledare";
 
 
     const handleChange = (e) => {
         let localhandledare = [];
         localhandledare[e.target.id]=e.target.value;
-        setHandledare(localhandledare => ({
+        setHandledare(handledare => ({
             ...handledare,
             ...localhandledare
         })) 
@@ -28,9 +32,10 @@ const CreateHandledare = () => {
         }
     }
     const sendData = () => {
+        console.log(JSON.stringify(handledare));
+        console.log(JSON.stringify(dataarr));
         let answer=checkData(handledare,dataarr);
         if(answer == true){
-            const API_URL ="/APL-app/createdata.php?hash=tt&loginnamn=stefan&nyhandledare";
             let str="";
             dataarr.forEach(element => {
                 str+="&"+element;

@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { loadLS } from "../components/functions";
 import PeriodCard from "../components/PeriodCard";
 
-const API_URL ="/APL-app/readdata.php?hash=tt&loginnamn=stefan&perioder";
 
 function VisaPerioderPage(){
   const { state } = useLocation();
+  const [user,setUser] = useState(loadLS('user'));
+  const [hash,setHash] = useState(loadLS('hash'));
+  const API_URL ="/APL-app/readdata.php?hash="+hash+"&loginnamn="+user+"&perioder";
   let error="";
   if(state!=null){
     error=state.error;

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { loadLS } from "./functions";
 
 
 const EditHandledare = () => {
@@ -8,6 +9,10 @@ const EditHandledare = () => {
     const handledare = state.handledare;
     const handledareOrigin = state.handledareOrigin;
     const [handledareChanged, setHandledareChanged ] = useState([handledare]);
+    const [user,setUser] = useState(loadLS('user'));
+    const [hash,setHash] = useState(loadLS('hash'));
+    const API_URL ="/APL-app/editdata.php?hash="+hash+"&loginnamn="+user+"&edithandledare&originanv="+handledareOrigin.anvnamn;
+
     const handleChange = (e) => {
         handledare[e.target.id]=e.target.value;
         setHandledareChanged(handledareChanged => ({
@@ -17,14 +22,14 @@ const EditHandledare = () => {
     }
     const sendData = () => {
         // I xxxchanged har vi ändringar i xxxOrigin har vi orginal.
-        const API_URL ="/APL-app/editdata.php?hash=tt&loginnamn=stefan&edithandledare&originanv="+handledareOrigin.anvandarnamn;
         let str="";
         for (const key in handledareChanged) {
-            if(key!=0){
+            if(key!=0&&key!='hash'&&key!='expire'){
               str+="&"+key;
               str+="="+handledareChanged[key];
             }
         }
+        console.log(API_URL+str);
         sendit(API_URL+str);
     }
     const sendit = async (url) => { 
@@ -42,7 +47,7 @@ const EditHandledare = () => {
 
     return        (
          <div className="listVy w100">
-    <h1 className="header"> EditElev </h1>
+    <h1 className="header"> EditHandledare</h1>
     {Object.keys(handledare).map((key,index) => (
       <div className="data">
         <label>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { loadLS } from "./functions";
 
 
 const EditForetag = () => {
@@ -8,6 +9,10 @@ const EditForetag = () => {
     const foretag = state.foretag;
     const foretagOrigin = state.foretagOrigin;
     const [foretagChanged, setForetagChanged ] = useState([foretag]);
+    const [user,setUser] = useState(loadLS('user'));
+    const [hash,setHash] = useState(loadLS('hash'));
+    const API_URL ="/APL-app/editdata.php?hash="+hash+"&loginnamn="+user+"&editforetag&foretagsnamn="+foretagOrigin.foretagsnamn;
+  
     const handleChange = (e) => {
       foretag[e.target.id]=e.target.value;
       setForetagChanged(foretagChanged => ({
@@ -17,7 +22,6 @@ const EditForetag = () => {
     }
     const sendData = () => {
         // I xxxchanged har vi ändringar i xxxOrigin har vi orginal.
-        const API_URL ="/APL-app/editdata.php?hash=tt&loginnamn=stefan&editforetag&foretagsnamn="+foretagOrigin.foretagsnamn;
         let str="";
         for (const key in foretagChanged) {
             if(key!=0){
@@ -42,7 +46,7 @@ const EditForetag = () => {
 
     return        (
          <div className="listVy w100">
-    <h1 className="header"> EditElev </h1>
+    <h1 className="header"> EditFöretag </h1>
     {Object.keys(foretag).map((key,index) => (
       <div className="data">
         <label>
