@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ElevCard from "../components/ElevCard";
 import { loadLS } from "../components/functions";
-
-
+import MainNavigation from "../components/layout/MainNavigation";
+import Login from "./LoginPage";
 
 function VisaEleverPage(props){
   const { state } = useLocation();
@@ -25,6 +25,8 @@ function VisaEleverPage(props){
       sM();
     },[]);
     return (
+      <div>
+      {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
         <div className="listVy w100">
             <div className="error">{error}</div>
             <h1 className="header"> Elevlista </h1>
@@ -42,6 +44,7 @@ function VisaEleverPage(props){
         <div><h2>no movies</h2></div>
       )
     }
+    </div>
     </div>
 
     )

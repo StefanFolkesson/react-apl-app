@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loadLS } from "./functions";
+import Login from '../pages/LoginPage';
+import MainNavigation from './layout/MainNavigation';
 
 
 function EditElevCard(){
@@ -47,6 +49,8 @@ function EditElevCard(){
 
  
     return (
+      <div>
+      {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
         <div className="listVy w100">
           <h1 className="header"> EditElev </h1>
           {Object.keys(elev).map((key,index) => (
@@ -61,6 +65,6 @@ function EditElevCard(){
           <button>Avbryt</button>
           <button onClick={() => sendData()}>Ändra</button>
 
-        </div>)}
+        </div></div>)}
 
 export default EditElevCard;

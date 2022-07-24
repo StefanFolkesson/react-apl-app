@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loadLS } from "./functions";
+import Login from '../pages/LoginPage';
+import MainNavigation from './layout/MainNavigation';
 
 
 const EditPeriod = () => {
@@ -46,6 +48,8 @@ const EditPeriod = () => {
 
 
     return        (
+      <div>
+      {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
     <div className="listVy w100">
         <h1 className="header"> EditPeriod </h1>
         <div className="data"><label>periodnamn:{periodOrigin['periodnamn']}<input type="text" value={period['periodnamn']} id='periodnamn' onChange={(e)=>handleChange(e)} /></label></div>
@@ -53,7 +57,7 @@ const EditPeriod = () => {
         <div className="data"><label>slut:{periodOrigin['slut']}<input type="date" value={period['slut']} id='slut' onChange={(e)=>handleChange(e)} /></label></div>
         <button>Avbryt</button>
         <button onClick={() => sendData()}>Ändra</button>
-    </div>
+    </div></div>
   )
     }
 

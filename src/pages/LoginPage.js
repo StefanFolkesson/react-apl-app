@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { saveLS } from "../components/functions";
-const API_URL ="/APL-app/readdata.php?hash=tt&loginnamn=stefan&elever";
+
 function Login(props){
     const { state } = useLocation();
     let error="";
@@ -20,7 +20,6 @@ function Login(props){
     }
     const sendData = () => {
         const API_URL ="/APL-app/login.php?anv="+user+"&pass="+password;
-        console.log(API_URL);
         sendit(API_URL);
     }
     const sendit = async (url) => { 
@@ -29,6 +28,8 @@ function Login(props){
       if(data.status=="0"){
         saveLS('user',data.data[0]['user']);
         saveLS('hash',data.data[0]['hash']);
+        saveLS('admin',data.data[0]['admin']);
+        console.log("Going : "+data.data[0]['admin'])
         navigate('/');
       } else if(data.status=="1") {
         navigate('/Login',{state:{error:"nodata"}});
@@ -39,6 +40,7 @@ function Login(props){
 
 
   return (
+    <div>
         <div className="blank">
         <div className="loginForm">
             <div className="error">{error}</div>
@@ -48,7 +50,7 @@ function Login(props){
             <button onClick={() => sendData()}>Logga in</button>
       </div>
     </div>
-
+    </div>
     )
 }
 

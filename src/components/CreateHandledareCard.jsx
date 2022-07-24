@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { checkData } from './functions';
 import { useNavigate } from "react-router-dom";
 import { loadLS } from "./functions";
+import Login from '../pages/LoginPage';
+import MainNavigation from './layout/MainNavigation';
 
 const CreateHandledare = () => {
     let navigate = useNavigate();
@@ -51,6 +53,8 @@ const CreateHandledare = () => {
     }
         
     return ( 
+        <div>
+        {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
         <div className='data' >
         {dataarr.map((key) => (
             <div className="data">
@@ -63,6 +67,7 @@ const CreateHandledare = () => {
         ))}   
             <button>Avbryt</button>
             <button onClick={() => sendData()}>Skicka</button>
+        </div>
         </div>
     ); 
 }

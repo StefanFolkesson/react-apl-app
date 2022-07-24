@@ -2,7 +2,8 @@ import { useEffect,  useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ForetagCard from "../components/ForetagCard";
 import { loadLS } from "../components/functions";
-
+import MainNavigation from "../components/layout/MainNavigation";
+import Login from "./LoginPage";
 
 function VisaForetagPage(){
   let navigate= useNavigate();
@@ -26,6 +27,8 @@ function VisaForetagPage(){
     },[]);
   
     return (
+      <div>
+      {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
       <div className="listVy w100">
             <div className="error">{error}</div>
                   <h1 className="header"> Företagslista</h1>
@@ -43,6 +46,7 @@ function VisaForetagPage(){
         <div><h2>no ftg</h2></div>
       )
     }
+    </div>
     </div>
 
     )

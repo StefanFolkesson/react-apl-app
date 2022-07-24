@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { checkData } from './functions';
 import { useNavigate } from "react-router-dom";
 import { loadLS } from "./functions";
+import Login from '../pages/LoginPage';
+import MainNavigation from './layout/MainNavigation';
 
 const CreateForetag = () => {
     let navigate = useNavigate();
@@ -50,6 +52,8 @@ const CreateForetag = () => {
     }
         
     return ( 
+        <div>
+        {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
         <div className='data' >
         {dataarr.map((key) => (
             <div className="data">
@@ -62,6 +66,7 @@ const CreateForetag = () => {
         ))}   
             <button>Avbryt</button>
             <button onClick={() => sendData()}>Skicka</button>
+        </div>
         </div>
     ); 
 }

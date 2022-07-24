@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { loadLS } from './functions';
-import UserProfile from './UserProfile';
+import Login from '../pages/LoginPage';
+import MainNavigation from './layout/MainNavigation';
+
 
 const CreateElev = () => {
     let navigate = useNavigate()
@@ -64,6 +66,8 @@ const CreateElev = () => {
 
 
     return ( 
+        <div>
+        {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
         <div className='data' >
             <label className='pnr'>Personnummer: <input value={elev['pnr']} id="pnr" onChange={(e)=>handleChange(e)}></input></label>
             <label className='fnamn'>Förnamn: <input value={elev['fnamn']} id="fnamn" onChange={(e)=>handleChange(e)}></input></label>
@@ -72,6 +76,7 @@ const CreateElev = () => {
             <label className='epost'>Epost: <input value={elev['epost']} id="epost" onChange={(e)=>handleChange(e)}></input></label>
             <button>Avbryt</button>
             <button onClick={() => sendData()}>Skicka</button>
+        </div>
         </div>
     ); 
 }

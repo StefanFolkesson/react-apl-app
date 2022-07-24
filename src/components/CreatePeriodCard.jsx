@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { checkData } from './functions';
 import { useNavigate } from "react-router-dom";
 import { loadLS } from "./functions";
+import Login from '../pages/LoginPage';
+import MainNavigation from './layout/MainNavigation';
 
 const CreatePeriod = () => {
     let navigate = useNavigate();
@@ -49,6 +51,8 @@ const CreatePeriod = () => {
     }
         
     return ( 
+        <div>
+        {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
         <div className='data' >
        
             <div className="data">
@@ -64,6 +68,7 @@ const CreatePeriod = () => {
           
             <button>Avbryt</button>
             <button onClick={() => sendData()}>Skicka</button>
+        </div>
         </div>
     ); 
 }

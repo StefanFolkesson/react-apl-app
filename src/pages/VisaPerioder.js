@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { loadLS } from "../components/functions";
 import PeriodCard from "../components/PeriodCard";
+import MainNavigation from "../components/layout/MainNavigation";
+import Login from "./LoginPage";
 
 
 function VisaPerioderPage(){
@@ -25,6 +27,8 @@ function VisaPerioderPage(){
     },[]);
   
     return (
+      <div>
+      {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
         <div className="listVy w100">
                      <div className="error">{error}</div>
                                          <h1 className="header"> Periodlista</h1>
@@ -44,7 +48,7 @@ function VisaPerioderPage(){
       )
     }
     </div>
-
+</div>
     )
 }
 

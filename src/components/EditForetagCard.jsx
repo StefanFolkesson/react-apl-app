@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loadLS } from "./functions";
+import Login from '../pages/LoginPage';
+import MainNavigation from './layout/MainNavigation';
 
 
 const EditForetag = () => {
@@ -45,6 +47,8 @@ const EditForetag = () => {
 
 
     return        (
+      <div>
+      {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
          <div className="listVy w100">
     <h1 className="header"> EditFöretag </h1>
     {Object.keys(foretag).map((key,index) => (
@@ -58,6 +62,7 @@ const EditForetag = () => {
     <button>Avbryt</button>
     <button onClick={() => sendData()}>Ändra</button>
 
+  </div>
   </div>
   )
     }
