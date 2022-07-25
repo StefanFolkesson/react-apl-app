@@ -16,6 +16,7 @@ import { useEffect, useReducer } from "react";
 import Login from "./pages/LoginPage";
 import Logout from "./pages/LogoutPage";
 import { loadLS, saveLS } from "./components/functions";
+import PlaceradePage from "./pages/Placerade";
 
 
 function App(){
@@ -43,6 +44,7 @@ function App(){
             <Route path="/EditPeriod" element ={<EditPeriodCard />} />
             <Route path="/Login" element ={<Login />} />
             <Route path="/Logout" element ={<Logout />} />
+            <Route path="/Placerade" element ={<PlaceradePage />} />
         </Routes>
     </div>;
 }

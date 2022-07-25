@@ -36,6 +36,9 @@ function MainNavigation(){
             <Link to='/Perioder'>Visa Perioder</Link>
         </li>
         <li>
+            <Link to='/Placerade'>Visa Placerade</Link>
+        </li>
+        <li>
             <Link to='/Logout'>Logga ut</Link>
         </li>
     </ul>
