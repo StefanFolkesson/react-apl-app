@@ -48,7 +48,7 @@ const CreateElev = () => {
             sendit(API_URL+str);
             }
             else {
-                document.getElementById(answer).focus()
+                document.getElementById(answer).focus();
             }
         }
             const sendit = async (url) => { 

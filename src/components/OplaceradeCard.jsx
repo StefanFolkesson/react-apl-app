@@ -63,11 +63,6 @@ const OplaceradeCard = () => {
         setFnamn("");
         setPnr("");
     }
-    const placera = (pnr) => {
-        setEnamn("");
-        setFnamn("");
-        setPnr("");
-    }
     return ( 
         <div>
                           <div className='data'>
@@ -83,7 +78,7 @@ const OplaceradeCard = () => {
                                 <td className='pnr'>{elev.pnr}</td>
                                 <td className='fnamn'>{elev.fnamn}</td>
                                 <td  className='enamn'>{elev.enamn}</td>
-                                <td> <input type='button' value='placera' onClick={(e)=>placera(elev.pnr)} ></input></td>
+                                <td> <input type='button' value='placera' onClick={(e)=>navigate("/PlaceraCard",{state:{pnr:pnr}})} ></input></td>
                                 </tr>
                 ))}
             </table>
