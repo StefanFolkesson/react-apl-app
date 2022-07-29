@@ -17,6 +17,7 @@ import Login from "./pages/LoginPage";
 import Logout from "./pages/LogoutPage";
 import { loadLS, saveLS } from "./components/functions";
 import PlaceradePage from "./pages/Placerade";
+import PlaceraCard from "./components/PlaceraCard";
 
 
 function App(){
@@ -45,6 +46,7 @@ function App(){
             <Route path="/Login" element ={<Login />} />
             <Route path="/Logout" element ={<Logout />} />
             <Route path="/Placerade" element ={<PlaceradePage />} />
+            <Route path="/PlaceraCard" element ={<PlaceraCard />} />
         </Routes>
     </div>;
 }

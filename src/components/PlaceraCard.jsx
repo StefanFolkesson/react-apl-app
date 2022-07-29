@@ -2,7 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Login from "../pages/LoginPage";
 import { loadLS } from "./functions";
+import MainNavigation from "./layout/MainNavigation";
 
 const PlaceraCard = () => {
     // H'msta alla perioder
@@ -28,35 +30,36 @@ const PlaceraCard = () => {
     const getPerioder = async () => { 
         const responsePeriod = await fetch(`${API_URL_PERIODER}`);
         const dataPeriod = await responsePeriod.json();
+        console.log(dataPeriod.data);
         setPerioder(dataPeriod.data);
     }
-
-
     const getForetag = async () => {
         const responseFtg = await fetch(`${API_URL_FORETAG}`);
         const dataFtg = await responseFtg.json();
+        console.log(dataFtg.data);
         setForetag(dataFtg.data);
     }
+
     useEffect(() => {
         getPerioder();
         getForetag();
     },[]);
-  
-    const sendit = async (url) => { 
-        const response = await fetch(`${url}`);
-        const data = await response.json();
 
+    const sendit = async (url) => { 
+        console.log(url);
+        const response = await fetch(`${url}`);
+        let data = await response.json();
         if(data.status=="0"){
-            setElever(data.data);
+            navigate('/');
         } else if(data.status=="1") {
-            navigate('/',{state: { error: 'Något är fel på placeringarna'} })
+            navigate('/',{state: { error: 'Något är fel på placeringarna'} });
         } else if(data.status=="2") {
         navigate('/Login');
         }
     }
 
     const handleChange = (e) => {
-        const {name,value} = e.target;
+        const {name,value}=e.currentTarget;
         setPlacering(prevState =>({
             ...prevState,
             [name]:value
@@ -64,17 +67,18 @@ const PlaceraCard = () => {
     }
     const handleClick = (e) => {
         let check=checkData();
-        if(check==true){
-            str="&personnummer="+placering.personnummer+"&period="+placering.period+"foretagsnamn="+placering.foretagsnamn;
+        console.log(placering);
+if(check===true){
+            let str="&personnummer="+placering.personnummer+"&period="+placering.period+"&foretagsnamn="+placering.foretagsnamn;
             sendit(API_URL_PLACERING+str);
-        }
+}
         else{
-            document.getElementById(answer).focus();
+            document.getElementById(check).focus();
         }
     }
     function checkData() {
         let returnelement=true;
-        elementen=[personnummer,period,foretagsnamn];
+        let elementen=['personnummer','period','foretagsnamn'];
         elementen.forEach(element => {
             if(placering[element] == null){
                 returnelement = element;
@@ -84,24 +88,25 @@ const PlaceraCard = () => {
 }
 
         return ( 
-        <div>
+              <div>
+            {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
                           <div className='data'>
                 <table>
                 <tr>
                     <td>Elevens data</td>
-                    <td>period<select onChange={handleChange} id='period'>{
+                    <td>period<select onChange={(e)=>handleChange(e)} id='period' name='period'>{
                         perioder?.length > 0 && perioder.map((period) => (
-                            <option value={period.periodnamn} name='period'>{period.periodnamn}</option>
+                            <option value={period.periodnamn} >{period.periodnamn}</option>
                         ))}
                         </select></td>
-                    <td>företag<select onChange={handleChange} id='foretagsnamn'>{
-                        foretag?.length > 0 && foretag.map((period) => (
-                            <option value={foretag.foretagsnamn} name='foretagsnamn'>{foretag.foretagsnamn}</option>
+                    <td>företag<select onChange={(e)=>handleChange(e)} id='foretagsnamn' name='foretagsnamn'>{
+                        foretag?.length > 0 && foretag.map((foretag) => (
+                            <option value={foretag.foretagsnamn} >{foretag.foretagsnamn}</option>
                         ))}</select> </td>
                 </tr>
-                <button value="Registrera" onClick={handleClick()}></button>
-                <button value="Avbryt" onClick={navigate("/")}></button>
             </table>
+            <button value="Registrera" onClick={(e)=>handleClick()}>Registrera</button>
+                <button value="Avbryt" onClick={(e)=>navigate("/")}>Avbryt</button>
             </div>
           </div>   ); 
 }

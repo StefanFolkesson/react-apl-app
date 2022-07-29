@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ElevCard from "./ElevCard";
 import { loadLS } from "./functions";
+import PlaceraCard from "./PlaceraCard";
 
 const OplaceradeCard = () => {
     let navigate= useNavigate();
@@ -15,7 +16,6 @@ const OplaceradeCard = () => {
     const [enamn,setEnamn] = useState("");
     const [elever,setElever] = useState([]);
     const [showElever,setShowElever] = useState([]);
-
     const API_URL ="/APL-app/readdata.php?hash="+hash+"&loginnamn="+user+"&oplacerade";
     const sendData = () => {
         sendit(API_URL);
@@ -39,6 +39,7 @@ const OplaceradeCard = () => {
         setShowElever(elever.filter(elevFilter));
     },[pnr,fnamn,enamn,elever]);
 
+    
     function elevFilter(elev){
         if( elev.pnr.includes(pnr)
         && elev.fnamn.includes(fnamn)
@@ -78,7 +79,7 @@ const OplaceradeCard = () => {
                                 <td className='pnr'>{elev.pnr}</td>
                                 <td className='fnamn'>{elev.fnamn}</td>
                                 <td  className='enamn'>{elev.enamn}</td>
-                                <td> <input type='button' value='placera' onClick={(e)=>navigate("/PlaceraCard",{state:{pnr:pnr}})} ></input></td>
+                                <td> <input type='button' value='placera' onClick={(e)=>navigate("/PlaceraCard",{state:{pnr:elev.pnr}})} ></input></td>
                                 </tr>
                 ))}
             </table>
