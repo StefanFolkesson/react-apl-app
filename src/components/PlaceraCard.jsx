@@ -15,8 +15,6 @@ const PlaceraCard = () => {
     let navigate= useNavigate();
     const [user,setUser] = useState(loadLS('user'));
     const [hash,setHash] = useState(loadLS('hash'));
-
-
     const API_URL_PERIODER ="/APL-app/readdata.php?hash="+hash+"&loginnamn="+user+"&perioder";
     const API_URL_FORETAG ="/APL-app/readdata.php?hash="+hash+"&loginnamn="+user+"&arbetsplatser";
     const API_URL_PLACERING ="/APL-app/createdata.php?hash="+hash+"&loginnamn="+user+"&nyplacering";
@@ -68,10 +66,10 @@ const PlaceraCard = () => {
     const handleClick = (e) => {
         let check=checkData();
         console.log(placering);
-if(check===true){
+        if(check===true){
             let str="&personnummer="+placering.personnummer+"&period="+placering.period+"&foretagsnamn="+placering.foretagsnamn;
             sendit(API_URL_PLACERING+str);
-}
+        }
         else{
             document.getElementById(check).focus();
         }
@@ -85,30 +83,31 @@ if(check===true){
             }
         });
         return returnelement;
-}
+    }
 
-        return ( 
-              <div>
-            {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
-                          <div className='data'>
-                <table>
-                <tr>
-                    <td>Elevens data</td>
-                    <td>period<select onChange={(e)=>handleChange(e)} id='period' name='period'>{
-                        perioder?.length > 0 && perioder.map((period) => (
-                            <option value={period.periodnamn} >{period.periodnamn}</option>
-                        ))}
-                        </select></td>
-                    <td>företag<select onChange={(e)=>handleChange(e)} id='foretagsnamn' name='foretagsnamn'>{
-                        foretag?.length > 0 && foretag.map((foretag) => (
-                            <option value={foretag.foretagsnamn} >{foretag.foretagsnamn}</option>
-                        ))}</select> </td>
-                </tr>
-            </table>
-            <button value="Registrera" onClick={(e)=>handleClick()}>Registrera</button>
-                <button value="Avbryt" onClick={(e)=>navigate("/")}>Avbryt</button>
-            </div>
-          </div>   ); 
+    return ( 
+<div>
+    {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
+    <div className='data'>
+        <div className="error">{error}</div>
+        <table>
+            <tr>
+                <td>Elevens data</td>
+                <td>period<select onChange={(e)=>handleChange(e)} id='period' name='period'>{
+                perioder?.length > 0 && perioder.map((period) => (
+                <option value={period.periodnamn} >{period.periodnamn}</option>
+                ))}
+                </select></td>
+                <td>företag<select onChange={(e)=>handleChange(e)} id='foretagsnamn' name='foretagsnamn'>{
+                foretag?.length > 0 && foretag.map((foretag) => (
+                <option value={foretag.foretagsnamn} >{foretag.foretagsnamn}</option>
+                ))}</select> </td>
+            </tr>
+        </table>
+        <button value="Registrera" onClick={(e)=>handleClick()}>Registrera</button>
+        <button value="Avbryt" onClick={(e)=>navigate("/")}>Avbryt</button>
+    </div>
+</div>   ); 
 }
 
 export default PlaceraCard;

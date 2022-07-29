@@ -45,26 +45,21 @@ const EditHandledare = () => {
           navigate('/Login');
         }
       }
-
-
     return        (
-      <div>
-      {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
-         <div className="listVy w100">
+<div>
+  {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
+  <div className="listVy w100">
     <h1 className="header"> EditHandledare</h1>
     {Object.keys(handledare).map((key,index) => (
-      <div className="data">
-        <label>
-          {key}:{handledareOrigin[key]}
-          <input type="text" value={handledare[key]} id={key} onChange={(e)=>handleChange(e)} />
-        </label>
-      </div>
+    <div className="data">
+      <label>{key}:{handledareOrigin[key]}<input type="text" value={handledare[key]} id={key} onChange={(e)=>handleChange(e)} /></label>
+    </div>
     ))}
     <button>Avbryt</button>
     <button onClick={() => sendData()}>Ändra</button>
-
-  </div></div>
+  </div>
+</div>
   )
-    }
+}
 
 export default EditHandledare;

@@ -5,30 +5,19 @@ import VisaEleverPage from "./pages/VisaElever";
 import VisaForetagPage from "./pages/VisaForetag";
 import VisaHandledarePage from "./pages/VisaHandledare";
 import VisaPerioderPage from "./pages/VisaPerioder";
-import MainNavigation from "./components/layout/MainNavigation";
 import EditElevCard from "./components/EditElevCard";
 import EditForetagCard from "./components/EditForetagCard";
 import EditHandledareCard from "./components/EditHandledareCard";
 import EditPeriodCard from "./components/EditPeriodCard";
 import DeletePage from "./pages/Delete";
 import CreatePage from "./pages/Create";
-import { useEffect, useReducer } from "react";
 import Login from "./pages/LoginPage";
 import Logout from "./pages/LogoutPage";
-import { loadLS, saveLS } from "./components/functions";
 import PlaceradePage from "./pages/Placerade";
 import PlaceraCard from "./components/PlaceraCard";
 
 
 function App(){
-
-    let user=loadLS('user');
-    const [, forceUpdate] = useReducer(x => x + 1, 0);
-    function handleClick() {
-      forceUpdate();
-    }
-
-
     return <div>
         <Routes>
             <Route path="/" element ={<StartupPage />} />
@@ -48,7 +37,7 @@ function App(){
             <Route path="/Placerade" element ={<PlaceradePage />} />
             <Route path="/PlaceraCard" element ={<PlaceraCard />} />
         </Routes>
-    </div>;
+    </div>
 }
 
 export default App;

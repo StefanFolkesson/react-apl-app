@@ -15,7 +15,6 @@ function DeletePage(){
   },[]);
 
   const sendit = async (typ) => { 
-    console.log(typ);
     let str;
     switch (typ) {
       case 'Elever':
@@ -36,14 +35,12 @@ function DeletePage(){
         }
     const response = await fetch(`${API_URL+str}`);
     const data = await response.json();
-    console.log(str);
-    console.log("status: "+data.status);
-    if(data.status=="0"){
+    if(data.status==="0"){
         navigate('/'+typ);
-    } else if(data.status=="1") {
+    } else if(data.status==="1") {
         navigate('/'+typ, { state: { error: 'Element isnt deletable!'} });
         // skall poppa upp ett felmeddelande. och stanna kvar... 
-    } else if(data.status=="2") {
+    } else if(data.status==="2") {
         navigate('/Login');
     }
     else {

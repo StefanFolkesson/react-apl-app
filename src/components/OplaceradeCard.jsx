@@ -2,15 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ElevCard from "./ElevCard";
 import { loadLS } from "./functions";
-import PlaceraCard from "./PlaceraCard";
 
 const OplaceradeCard = () => {
     let navigate= useNavigate();
     const [user,setUser] = useState(loadLS('user'));
     const [hash,setHash] = useState(loadLS('hash'));
-    const [pid,setPid] = useState("");
     const [pnr,setPnr] = useState("");
     const [fnamn,setFnamn] = useState("");
     const [enamn,setEnamn] = useState("");
@@ -66,25 +63,25 @@ const OplaceradeCard = () => {
     }
     return ( 
         <div>
-                          <div className='data'>
+            <div className='data'>
                 <table>
                 <tr>
-                                <td className='pnr'><input type='text' value={pnr} onChange={(e)=>handleChangePnr(e)}></input></td>
-                                <td className='fnamn'><input type='text' value={fnamn} onChange={(e)=>handleChangeFnamn(e)}></input></td>
-                                <td  className='enamn'><input type='text' value={enamn} onChange={(e)=>handleChangeEnamn(e)}></input></td>
-                                {(pnr!=""||fnamn!=""||enamn!="")&&<td><input type='button' value="Rensa filter" onClick={(e)=>clearFilter()}></input></td>}
-                                </tr>
-            {
-            showElever?.length > 0 && showElever.map((elev) => (     <tr>
-                                <td className='pnr'>{elev.pnr}</td>
-                                <td className='fnamn'>{elev.fnamn}</td>
-                                <td  className='enamn'>{elev.enamn}</td>
-                                <td> <input type='button' value='placera' onClick={(e)=>navigate("/PlaceraCard",{state:{pnr:elev.pnr}})} ></input></td>
-                                </tr>
+                    <td className='pnr'><input type='text' value={pnr} onChange={(e)=>handleChangePnr(e)}></input></td>
+                    <td className='fnamn'><input type='text' value={fnamn} onChange={(e)=>handleChangeFnamn(e)}></input></td>
+                    <td  className='enamn'><input type='text' value={enamn} onChange={(e)=>handleChangeEnamn(e)}></input></td>
+                    {(pnr!=""||fnamn!=""||enamn!="")&&<td><input type='button' value="Rensa filter" onClick={(e)=>clearFilter()}></input></td>}
+                </tr>
+                {showElever?.length > 0 && showElever.map((elev) => (     
+                <tr>
+                    <td className='pnr'>{elev.pnr}</td>
+                    <td className='fnamn'>{elev.fnamn}</td>
+                    <td  className='enamn'>{elev.enamn}</td>
+                    <td> <input type='button' value='placera' onClick={(e)=>navigate("/PlaceraCard",{state:{pnr:elev.pnr}})} ></input></td>
+                </tr>
                 ))}
-            </table>
+                </table>
             </div>
-          </div>   ); 
+        </div>   ); 
 }
 
 export default OplaceradeCard;

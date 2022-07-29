@@ -25,32 +25,32 @@ function Login(props){
     const sendit = async (url) => { 
       const response = await fetch(`${url}`);
       const data = await response.json();
-      if(data.status=="0"){
+      if(data.status==="0"){
         saveLS('user',data.data[0]['user']);
         saveLS('hash',data.data[0]['hash']);
         saveLS('admin',data.data[0]['admin']);
         console.log("Going : "+data.data[0]['admin'])
         navigate('/');
-      } else if(data.status=="1") {
+      } else if(data.status==="1") {
         navigate('/Login',{state:{error:"nodata"}});
-      } else if(data.status=="2") {
+      } else if(data.status==="2") {
         navigate('/Login',{state:{error:"no user!"}});
       }
     }
 
 
   return (
-    <div>
-        <div className="blank">
-        <div className="loginForm">
-            <div className="error">{error}</div>
-            <h1 className="header"> Login </h1>
-            <div><label>Username: <input type="text" value={user} onChange={handleChangeUser}></input></label></div>
-            <div><label>Password: <input type="password" value={password} onChange={handleChangePassword}></input></label></div>
-            <button onClick={() => sendData()}>Logga in</button>
-      </div>
+<div>
+    <div className="blank">
+      <div className="loginForm">
+          <div className="error">{error}</div>
+          <h1 className="header"> Login </h1>
+          <div><label>Username: <input type="text" value={user} onChange={handleChangeUser}></input></label></div>
+          <div><label>Password: <input type="password" value={password} onChange={handleChangePassword}></input></label></div>
+          <button onClick={() => sendData()}>Logga in</button>
     </div>
-    </div>
+  </div>
+</div>
     )
 }
 

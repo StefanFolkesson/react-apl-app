@@ -17,37 +17,33 @@ function VisaPerioderPage(){
   }
   let navigate = useNavigate();
     const [perioder, setPerioder ] = useState([]);
-    const sM = async () => { 
+    const startup = async () => { 
       const response = await fetch(`${API_URL}`);
       const data = await response.json();
       setPerioder(data.data);
     }
     useEffect(() => {
-      sM();
+      startup();
     },[]);
   
     return (
-      <div>
-      {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
-        <div className="listVy w100">
-                     <div className="error">{error}</div>
-                                         <h1 className="header"> Periodlista</h1>
-                    <button onClick={() => navigate("/Create", { state: { typ:'Period'} })}>Nytt Period</button>
-
-    {
-      perioder?.length > 0
-      ? (
-        <div className='period'>
-          {perioder.map((period) => (
-            <PeriodCard period={period}/>
-          ))}
-      </div>
-  
-      ) : (
-        <div><h2>no peroid</h2></div>
-      )
-    }
+<div>
+  {user==="null"||user===""||user==="undefined"?<Login />:<MainNavigation />}
+  <div className="listVy w100">
+    <div className="error">{error}</div>
+    <h1 className="header"> Periodlista</h1>
+    <button onClick={() => navigate("/Create", { state: { typ:'Period'} })}>Nytt Period</button>
+    {perioder?.length > 0 ? (
+    <div className='period'>
+      {perioder.map((period) => (<PeriodCard period={period}/>))}
     </div>
+    ) : (
+    <div>
+      <h2>no peroid</h2>
+    </div>
+    )
+    }
+  </div>
 </div>
     )
 }

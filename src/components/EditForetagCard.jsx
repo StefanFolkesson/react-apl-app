@@ -47,24 +47,23 @@ const EditForetag = () => {
 
 
     return        (
-      <div>
-      {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
-         <div className="listVy w100">
+<div>
+  {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
+  <div className="listVy w100">
     <h1 className="header"> EditFöretag </h1>
     {Object.keys(foretag).map((key,index) => (
-      <div className="data">
-        <label>
-          {key}:{foretagOrigin[key]}
-          <input type="text" value={foretag[key]} id={key} onChange={(e)=>handleChange(e)} />
-        </label>
-      </div>
+    <div className="data">
+      <label>
+      {key}:{foretagOrigin[key]}
+      <input type="text" value={foretag[key]} id={key} onChange={(e)=>handleChange(e)} />
+      </label>
+    </div>
     ))}
     <button>Avbryt</button>
     <button onClick={() => sendData()}>Ändra</button>
-
   </div>
-  </div>
+</div>
   )
-    }
+}
 
 export default EditForetag;

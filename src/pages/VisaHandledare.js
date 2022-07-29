@@ -17,42 +17,32 @@ function VisaHandledarePage(){
   }
 
   let navigate = useNavigate();
-    const [handledare, setHandledare ] = useState([]);
-    const sM = async () => { 
-      const response = await fetch(`${API_URL}`);
-      const data = await response.json();
-      setHandledare(data.data);
-    }
-    useEffect(() => {
-      sM();
-    },[]);
-  
+  const [handledare, setHandledare ] = useState([]);
+  const startup = async () => { 
+    const response = await fetch(`${API_URL}`);
+    const data = await response.json();
+    setHandledare(data.data);
+  }
+  useEffect(() => {
+    startup();
+  },[]);
 
-
-
-
-    return (
-      <div>
-      {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
-        <div className="listVy w100">
-                     <div className="error">{error}</div>
-                    <h1 className="header"> Handledarlista </h1>
-                    <button onClick={() => navigate("/Create", { state: { typ:'Handledare'} })}>Ny handledare</button>
-
-    {
-      handledare?.length > 0
-      ? (
-        <div className='period'>
-          {handledare.map((handled) => (
-            <HandledareCard handledare={handled}/>
-          ))}
-      </div>
-  
-      ) : (
-        <div><h2>no handled</h2></div>
-      )
-    }
+  return (
+<div>
+  {user==="null"||user===""||user==="undefined"?<Login />:<MainNavigation />}
+  <div className="listVy w100">
+    <div className="error">{error}</div>
+    <h1 className="header"> Handledarlista </h1>
+    <button onClick={() => navigate("/Create", { state: { typ:'Handledare'} })}>Ny handledare</button>
+    {handledare?.length > 0? (
+    <div className='period'>
+      {handledare.map((handled) => (<HandledareCard handledare={handled}/>))}
     </div>
+    ) : (
+    <div><h2>no handled</h2></div>
+    )
+    }
+  </div>
 </div>
     )
 }

@@ -2,14 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ElevCard from "./ElevCard";
 import { loadLS } from "./functions";
 
 const PlaceradeCard = () => {
     let navigate= useNavigate();
     const [user,setUser] = useState(loadLS('user'));
     const [hash,setHash] = useState(loadLS('hash'));
-    const [pid,setPid] = useState("");
     const [personnummer,setPersonnummer] = useState("");
     const [period,setPeriod] = useState("");
     const [foretagsnamn,setForetagsnamn] = useState("");
@@ -34,7 +32,7 @@ const PlaceradeCard = () => {
     }
     useEffect(() => {
         sendData();
-        },[]);
+    },[]);
     useEffect(()=>{
         setShowElever(elever.filter(elevFilter));
     },[personnummer,period,foretagsnamn,elever]);
@@ -64,25 +62,26 @@ const PlaceradeCard = () => {
         setPersonnummer("");
     }
     return ( 
-        <div>
-                          <div className='data'>
-                <table>
-                <tr>
-                                <td className='personnummer'><input type='text' value={personnummer} onChange={(e)=>handleChangePnr(e)}></input></td>
-                                <td className='period'><input type='text' value={period} onChange={(e)=>handleChangePeriod(e)}></input></td>
-                                <td  className='foretagsnamn'><input type='text' value={foretagsnamn} onChange={(e)=>handleChangeFtg(e)}></input></td>
-                                {(personnummer!=""||period!=""||foretagsnamn!="")&&<td><input type='button' value="Rensa filter" onClick={(e)=>clearFilter()}></input></td>}
-                                </tr>
-            {
-            showElever?.length > 0 && showElever.map((elev) => (     <tr>
-                                <td className='personnummer'>{elev.personnummer}</td>
-                                <td className='period'>{elev.period}</td>
-                                <td  className='foretagsnamn'>{elev.foretagsnamn}</td>
-                                </tr>
-                ))}
-            </table>
-            </div>
-          </div>   ); 
+<div>
+    <div className='data'>
+        <table>
+            <tr>
+                <td className='personnummer'><input type='text' value={personnummer} onChange={(e)=>handleChangePnr(e)}></input></td>
+                <td className='period'><input type='text' value={period} onChange={(e)=>handleChangePeriod(e)}></input></td>
+                <td  className='foretagsnamn'><input type='text' value={foretagsnamn} onChange={(e)=>handleChangeFtg(e)}></input></td>
+                {(personnummer!=""||period!=""||foretagsnamn!="")&&<td><input type='button' value="Rensa filter" onClick={(e)=>clearFilter()}></input></td>}
+            </tr>
+            {showElever?.length > 0 && showElever.map((elev) => (     
+            <tr>
+                <td className='personnummer'>{elev.personnummer}</td>
+                <td className='period'>{elev.period}</td>
+                <td  className='foretagsnamn'>{elev.foretagsnamn}</td>
+            </tr>
+            ))}
+        </table>
+    </div>
+</div>
+    ); 
 }
 
 export default PlaceradeCard;
