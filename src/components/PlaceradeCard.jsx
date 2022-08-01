@@ -76,6 +76,7 @@ const PlaceradeCard = () => {
                 <td className='personnummer'>{elev.personnummer}</td>
                 <td className='period'>{elev.period}</td>
                 <td  className='foretagsnamn'>{elev.foretagsnamn}</td>
+                <td><button onClick={() => navigate("/Delete", { state: { id: elev.pid, typ: 'Placerade'} })}>Ta bort</button></td>
             </tr>
             ))}
         </table>

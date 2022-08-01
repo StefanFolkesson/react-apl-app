@@ -48,9 +48,9 @@ const PlaceraCard = () => {
         const response = await fetch(`${url}`);
         let data = await response.json();
         if(data.status=="0"){
-            navigate('/');
+            navigate('/Placerade');
         } else if(data.status=="1") {
-            navigate('/',{state: { error: 'Något är fel på placeringarna'} });
+            navigate('/Placerade',{state: { error: 'Något är fel på placeringarna'} });
         } else if(data.status=="2") {
         navigate('/Login');
         }
@@ -93,19 +93,24 @@ const PlaceraCard = () => {
         <table>
             <tr>
                 <td>Elevens data</td>
-                <td>period<select onChange={(e)=>handleChange(e)} id='period' name='period'>{
+                <td>period<select onChange={(e)=>handleChange(e)} id='period' name='period'>
+                    <option >välj period</option>
+                    {
                 perioder?.length > 0 && perioder.map((period) => (
                 <option value={period.periodnamn} >{period.periodnamn}</option>
                 ))}
                 </select></td>
-                <td>företag<select onChange={(e)=>handleChange(e)} id='foretagsnamn' name='foretagsnamn'>{
+                <td>företag<select onChange={(e)=>handleChange(e)} id='foretagsnamn' name='foretagsnamn'>
+                <option >välj företag</option>
+
+                    {
                 foretag?.length > 0 && foretag.map((foretag) => (
                 <option value={foretag.foretagsnamn} >{foretag.foretagsnamn}</option>
                 ))}</select> </td>
             </tr>
         </table>
         <button value="Registrera" onClick={(e)=>handleClick()}>Registrera</button>
-        <button value="Avbryt" onClick={(e)=>navigate("/")}>Avbryt</button>
+        <button value="Avbryt" onClick={(e)=>navigate("/Placerade")}>Avbryt</button>
     </div>
 </div>   ); 
 }

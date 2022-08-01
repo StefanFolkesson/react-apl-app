@@ -1,16 +1,25 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import ElevRappCard from "../components/ElevRappCard";
 import { loadLS } from "../components/functions";
 import MainNavigation from "../components/layout/MainNavigation";
 import Login from "./LoginPage";
 
 function StartupPage(){
+    const { state } = useLocation();
     let user = loadLS('user');
     let admin = loadLS('admin');
     let hash = loadLS('hash');
     const [elever, setElever ] = useState([]);
     const [eleverAll, setAllElever ] = useState([]);
     const API_URL ="/APL-app/readdata.php?hash="+hash+"&loginnamn="+user+"&idag";
+
+    let error="";
+    if(state!=null){
+      error=state.error;
+    }
+
+
     const getIdag = async () => { 
         if(admin==0){
             const response = await fetch(`${API_URL}`);
@@ -35,6 +44,7 @@ function StartupPage(){
         return (
 <div>
     {user==="null"||user===""||user==="undefined"?<Login />:<MainNavigation />}
+    <div className="error">{error}</div>
     <div>Förstasida</div>
     <div>
         Du är en handledare
@@ -52,6 +62,7 @@ function StartupPage(){
         return (
 <div>
     {user==="null"||user===""||user==="undefined"?<Login />:<MainNavigation />}
+    <div className="error">{error}</div>
     <div>Förstasida</div>
     <div>
         Du är en admin

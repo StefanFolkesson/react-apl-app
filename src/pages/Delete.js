@@ -10,6 +10,7 @@ function DeletePage(){
   const [user,setUser] = useState(loadLS('user'));
   const [hash,setHash] = useState(loadLS('hash'));
   const API_URL ="/APL-app/deletedata.php?hash="+hash+"&loginnamn="+user;
+  console.log(id);
   useEffect(() => {
     sendit(typ);
   },[]);
@@ -29,8 +30,8 @@ function DeletePage(){
       case 'Handledare':
         str="&delhandledare&anvnamn="+id;
         break;
-      case 'Placering':
-          str="&delplacering&id="+id;
+      case 'Placerade':
+          str="&delplacering&pid="+id;
           break;
         }
     const response = await fetch(`${API_URL+str}`);

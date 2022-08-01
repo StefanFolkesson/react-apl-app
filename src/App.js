@@ -15,13 +15,16 @@ import Login from "./pages/LoginPage";
 import Logout from "./pages/LogoutPage";
 import PlaceradePage from "./pages/Placerade";
 import PlaceraCard from "./components/PlaceraCard";
+import CreatePresens from "./components/CreatePresensCard";
+import EditPresens from "./components/EditPresensCard";
 
 
 function App(){
     return <div>
+        <StartupPage />
         <Routes>
             <Route path="/" element ={<StartupPage />} />
-            <Route path="/client-apl-app" element ={<StartupPage />} />
+            <Route path="/client/build" element ={<StartupPage />} />
             <Route path="/Elever" element ={<VisaEleverPage />} />
             <Route path="/Delete" element ={<DeletePage />} />
             <Route path="/Foretag" element ={<VisaForetagPage />} />
@@ -36,6 +39,8 @@ function App(){
             <Route path="/Logout" element ={<Logout />} />
             <Route path="/Placerade" element ={<PlaceradePage />} />
             <Route path="/PlaceraCard" element ={<PlaceraCard />} />
+            <Route path="/CreatePresens" element = {<CreatePresens />} />
+            <Route path="/EditPresens" element = {<EditPresens />} />
         </Routes>
     </div>
 }
