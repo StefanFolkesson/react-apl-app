@@ -55,7 +55,7 @@ const EditForetag = () => {
     <div className="data">
       <label>
       {key}:{foretagOrigin[key]}
-      <input type="text" value={foretag[key]} id={key} onChange={(e)=>handleChange(e)} />
+      {key!='foretagsnamn' && <input type="text" value={foretag[key]} id={key} onChange={(e)=>handleChange(e)} />}
       </label>
     </div>
     ))}

@@ -88,7 +88,7 @@ const PlaceraCard = () => {
     return ( 
 <div>
     {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
-    <div className='data'>
+    <div className="listVy w100">
         <div className="error">{error}</div>
         <table>
             <tr>

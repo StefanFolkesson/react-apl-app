@@ -21,10 +21,9 @@ import EditPresens from "./components/EditPresensCard";
 
 function App(){
     return <div>
-        <StartupPage />
         <Routes>
             <Route path="/" element ={<StartupPage />} />
-            <Route path="/client/build" element ={<StartupPage />} />
+            <Route path="/client-apl-app" element ={<StartupPage />} />
             <Route path="/Elever" element ={<VisaEleverPage />} />
             <Route path="/Delete" element ={<DeletePage />} />
             <Route path="/Foretag" element ={<VisaForetagPage />} />

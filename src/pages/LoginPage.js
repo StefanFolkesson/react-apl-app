@@ -40,7 +40,7 @@ function Login(props){
 
 
   return (
-<div>
+<div className="w200 listVy ">
     <div className="blank">
       <div className="loginForm">
           <div className="error">{error}</div>

@@ -1,19 +1,21 @@
 .header {
-    width: 100%;
+    width: 90vw;
     height: 5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #77002e;
-    padding: 0 10%;
+    background-color: gray;
+    padding:0;
+    padding-left:10vw;
   }
 .header nav {
-  width: 70%;
+  width: 80%;
+  height: 100%;
+  line-height: 5rem;
 }  
   .logo {
-    font-size: 2rem;
+    font-size: 1rem;
     color: white;
-    font-weight: bold;
   }
   
   .header ul {
@@ -25,12 +27,12 @@
   }
   
   .header li {
-    margin-left: 1rem;
+    margin-left: .5rem;
   }
   
   .header a {
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #fcb8d2;
   }
   
@@ -38,4 +40,13 @@
   .header a:active,
   .header a.active {
     color: white;
+  }
+
+ .admin {
+    background-color: purple;
+
+  }
+ .user {
+    background-color: green;
+
   }

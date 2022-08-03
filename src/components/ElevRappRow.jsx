@@ -2,9 +2,11 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CreatePresens from "./CreatePresensCard";
+import { loadLS } from "./functions";
 
 const ElevRappRow = ({elev}) => {
 
+    let admin = loadLS('admin');
     const [isHovering, setIsHovering] = useState(false);
     const handleMouseOver = () => {
       setIsHovering(true);
@@ -24,6 +26,8 @@ const ElevRappRow = ({elev}) => {
             <span className='fnamn'>{elev.fnamn}</span>
             <span className='enamn'>{elev.enamn}</span>
             <span className='status'>{elev.status}</span>
+            {elev.foretagsnamn && <span className='foretag'>{elev.foretagsnamn}</span>}
+            {admin!=1 && (<span>
             {elev.status=="Ej registrerad"?( 
                 <span>           
             <span><button onClick={() => navigate("/CreatePresens", { state: { elev:elev,presens:1} })}>Närvarande</button></span>
@@ -39,7 +43,7 @@ const ElevRappRow = ({elev}) => {
                 <span><button onClick={() => navigate("/EditPresens", { state: { elev:elev,presens:3} })}>Annan orsak</button></span>
                 </span>}
             </span>
-            )}
+            )}</span>)}
         </div>
     ); 
 }

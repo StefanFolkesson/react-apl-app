@@ -52,7 +52,7 @@ const EditPeriod = () => {
       {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
     <div className="listVy w100">
         <h1 className="header"> EditPeriod </h1>
-        <div className="data"><label>periodnamn:{periodOrigin['periodnamn']}<input type="text" value={period['periodnamn']} id='periodnamn' onChange={(e)=>handleChange(e)} /></label></div>
+        <div className="data"><label>periodnamn:{periodOrigin['periodnamn']}</label></div>
         <div className="data"><label>start:{periodOrigin['start']}<input type="date" value={period['start']} id='start' onChange={(e)=>handleChange(e)} /></label></div>
         <div className="data"><label>slut:{periodOrigin['slut']}<input type="date" value={period['slut']} id='slut' onChange={(e)=>handleChange(e)} /></label></div>
         <button>Avbryt</button>

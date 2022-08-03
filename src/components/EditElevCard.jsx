@@ -41,7 +41,7 @@ function EditElevCard(){
       if(data.status=="0"){
         navigate('/Elever');
       } else if(data.status=="1") {
-        // skall poppa upp ett felmeddelande. och stanna kvar... 
+        navigate('/Elever',{status:{error:'Kan inte uppdatera elev!'}});
       } else if(data.status=="2") {
         navigate('/Login');
       }
@@ -57,7 +57,7 @@ function EditElevCard(){
             <div className="data">
               <label>
                 {key}:{originElev[key]}
-                <input type="text" value={elev[key]} id={key} onChange={(e)=>handleChange(e)} />
+                {key!='pnr'&&<input type="text" value={elev[key]} id={key} onChange={(e)=>handleChange(e)} />}
               </label>
               
             </div>

@@ -6,7 +6,7 @@ import classes from './MainNavigation.module.css';
 function MainNavigation(){
     let user=loadLS('user');
     let admin=loadLS('admin');
-    let    setup =             <nav>
+    let    setup =             <nav  className={classes.user}>
     <ul>
         <li>
             <Link to='/'>Startsida</Link>
@@ -18,7 +18,7 @@ function MainNavigation(){
 </nav>;
 
     if(admin==1){
-    setup =             <nav>
+    setup =             <nav className={classes.admin}>
     <ul>
         <li>
             <Link to='/'>Startsida</Link>
@@ -46,7 +46,7 @@ function MainNavigation(){
 } 
     return (
         <header className={classes.header}>
-            <span className={classes.logo}>User: {user} <a href="/client-apl-app">Vad vill du göra?</a></span>
+            <span className={classes.logo}>User: {user} <a href="/client-apl-app">reload</a></span>
             {setup}
         </header>
     )

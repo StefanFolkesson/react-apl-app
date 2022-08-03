@@ -45,6 +45,7 @@ const EditHandledare = () => {
           navigate('/Login');
         }
       }
+      const notedit = ['id','admin','hash','expire'];
     return        (
 <div>
   {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
@@ -52,7 +53,7 @@ const EditHandledare = () => {
     <h1 className="header"> EditHandledare</h1>
     {Object.keys(handledare).map((key,index) => (
     <div className="data">
-      <label>{key}:{handledareOrigin[key]}<input type="text" value={handledare[key]} id={key} onChange={(e)=>handleChange(e)} /></label>
+      {!notedit.includes(key) && <label>{key}:{handledareOrigin[key]}<input type="text" value={handledare[key]} id={key} onChange={(e)=>handleChange(e)} /></label>}
     </div>
     ))}
     <button>Avbryt</button>

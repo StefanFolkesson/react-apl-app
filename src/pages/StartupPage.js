@@ -12,7 +12,6 @@ function StartupPage(){
     let hash = loadLS('hash');
     const [elever, setElever ] = useState([]);
     const [eleverAll, setAllElever ] = useState([]);
-    const API_URL ="/APL-app/readdata.php?hash="+hash+"&loginnamn="+user+"&idag";
 
     let error="";
     if(state!=null){
@@ -21,19 +20,27 @@ function StartupPage(){
 
 
     const getIdag = async () => { 
+        let API_URL = "/APL-app/readdata.php?hash=";
         if(admin==0){
-            const response = await fetch(`${API_URL}`);
-            const data = await response.json();
-           setElever(data.data);
+            API_URL ="/APL-app/readdata.php?hash="+hash+"&loginnamn="+user+"&idag";
+        } else 
+        {
+            API_URL ="/APL-app/readdata.php?hash="+hash+"&loginnamn="+user+"&rappidag"; // Gör inte det jag vill
         }
+        const response = await fetch(`${API_URL}`);
+        const data = await response.json();
+        setElever(data.data);
     }
-    const API_URL2 ="/APL-app/readdata.php?hash="+hash+"&loginnamn="+user+"&tillsnu";
     const getAll = async () => { 
+        let API_URL2 ="/APL-app/readdata.php?hash=";
         if(admin==0){
-            const response = await fetch(`${API_URL2}`);
-            const data = await response.json();
-            setAllElever(data.data);
+            API_URL2 ="/APL-app/readdata.php?hash="+hash+"&loginnamn="+user+"&tillsnu";
+        } else {
+            API_URL2 ="/APL-app/readdata.php?hash="+hash+"&loginnamn="+user+"&orapporterade";
         }
+        const response = await fetch(`${API_URL2}`);
+        const data = await response.json();
+        setAllElever(data.data);
     }
     useEffect(() => {
         getIdag();
@@ -44,6 +51,7 @@ function StartupPage(){
         return (
 <div>
     {user==="null"||user===""||user==="undefined"?<Login />:<MainNavigation />}
+    <div className="listVy w100">
     <div className="error">{error}</div>
     <div>Förstasida</div>
     <div>
@@ -56,18 +64,22 @@ function StartupPage(){
     Och här är rapporteringen hittils:
     <ElevRappCard elever={eleverAll}/>
 </div>
+</div>
         );
     }
     else {
         return (
 <div>
     {user==="null"||user===""||user==="undefined"?<Login />:<MainNavigation />}
+    <div className="listVy w100">
     <div className="error">{error}</div>
     <div>Förstasida</div>
     <div>
         Du är en admin
-        Här är lite data
+        Dessa elever är de som behöver rapporteras idag:
+        <ElevRappCard elever={eleverAll}/>
     </div>
+</div>
 </div>
         )
     }
