@@ -1,11 +1,22 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CreatePresens from "./CreatePresensCard";
 import { loadLS } from "./functions";
 
 const ElevRappRow = ({elev}) => {
 
+    let css="statusOk";
+    switch(elev.status){
+        case "Ej registrerad":
+            css="statusMissing";
+            break;
+        case 2:
+            css="statusSick";           
+            break;
+        case 3:
+            css="statusOther";
+            break;
+    }
     let admin = loadLS('admin');
     const [isHovering, setIsHovering] = useState(false);
     const handleMouseOver = () => {
@@ -20,7 +31,7 @@ const ElevRappRow = ({elev}) => {
     const originElev = JSON.parse(JSON.stringify(elev));
 
     return ( 
-        <div className='data' >
+        <div className={css} >
             <span className='pnr'>{elev.pnr}</span>
             {elev.dag && <span className='dag'>{elev.dag}</span>}
             <span className='fnamn'>{elev.fnamn}</span>

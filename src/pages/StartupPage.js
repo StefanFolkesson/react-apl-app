@@ -4,6 +4,7 @@ import ElevRappCard from "../components/ElevRappCard";
 import { loadLS } from "../components/functions";
 import MainNavigation from "../components/layout/MainNavigation";
 import Login from "./LoginPage";
+import VisaPlaceradeCard from "./VisaPlacerade";
 
 function StartupPage(){
     const { state } = useLocation();
@@ -25,7 +26,7 @@ function StartupPage(){
             API_URL ="/APL-app/readdata.php?hash="+hash+"&loginnamn="+user+"&idag";
         } else 
         {
-            API_URL ="/APL-app/readdata.php?hash="+hash+"&loginnamn="+user+"&rappidag"; // Gör inte det jag vill
+            API_URL ="/APL-app/readdata.php?hash="+hash+"&loginnamn="+user+"&orapporterade"; // Gör inte det jag vill
         }
         const response = await fetch(`${API_URL}`);
         const data = await response.json();
@@ -77,7 +78,9 @@ function StartupPage(){
     <div>
         Du är en admin
         Dessa elever är de som behöver rapporteras idag:
-        <ElevRappCard elever={eleverAll}/>
+        <ElevRappCard elever={elever}/>
+
+        <VisaPlaceradeCard />
     </div>
 </div>
 </div>

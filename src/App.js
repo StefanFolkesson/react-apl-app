@@ -17,6 +17,7 @@ import PlaceradePage from "./pages/Placerade";
 import PlaceraCard from "./components/PlaceraCard";
 import CreatePresens from "./components/CreatePresensCard";
 import EditPresens from "./components/EditPresensCard";
+import VisaElevTotal from "./pages/VisaElevTotalPage";
 
 
 function App(){
@@ -40,6 +41,7 @@ function App(){
             <Route path="/PlaceraCard" element ={<PlaceraCard />} />
             <Route path="/CreatePresens" element = {<CreatePresens />} />
             <Route path="/EditPresens" element = {<EditPresens />} />
+            <Route path="/VisaElevTotal" element={<VisaElevTotal />} />            
         </Routes>
     </div>
 }

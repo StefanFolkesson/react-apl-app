@@ -43,3 +43,15 @@ code {
 label{
   display: block;
 }
+.statusMissing{
+  background-color: red;
+}
+.statusSick{
+  background-color: lightcoral;
+}
+.statusOk{
+  background-color: lightgreen;
+}
+.statusOther{
+  background-color: lightslategray;
+}
