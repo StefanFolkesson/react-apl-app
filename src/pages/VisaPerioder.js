@@ -5,7 +5,6 @@ import PeriodCard from "../components/PeriodCard";
 import MainNavigation from "../components/layout/MainNavigation";
 import Login from "./LoginPage";
 
-
 function VisaPerioderPage(){
   const { state } = useLocation();
   const [user,setUser] = useState(loadLS('user'));

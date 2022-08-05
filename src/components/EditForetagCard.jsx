@@ -4,7 +4,6 @@ import { loadLS } from "./functions";
 import Login from '../pages/LoginPage';
 import MainNavigation from './layout/MainNavigation';
 
-
 const EditForetag = () => {
     let navigate = useNavigate();
     const { state } = useLocation();
@@ -39,12 +38,11 @@ const EditForetag = () => {
         if(data.status=="0"){
           navigate('/Foretag');
         } else if(data.status=="1") {
-            navigate('/Foretag',{state: { error: 'Cant edit foretag'} });
+            navigate('/Foretag',{state: { error: 'Kan inte redigera företag'} });
         } else if(data.status=="2") {
           navigate('/Login');
         }
       }
-
 
     return        (
 <div>

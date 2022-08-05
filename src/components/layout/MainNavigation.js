@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { loadLS } from "../functions";
-
 import classes from './MainNavigation.module.css';
 
 function MainNavigation(){
     let user=loadLS('user');
     let admin=loadLS('admin');
-    let    setup =             <nav  className={classes.user}>
+    let    setup =
+    <nav  className={classes.user}>
     <ul>
         <li>
             <Link to='/'>Startsida</Link>
@@ -18,7 +18,8 @@ function MainNavigation(){
 </nav>;
 
     if(admin==1){
-    setup =             <nav className={classes.admin}>
+    setup =
+    <nav className={classes.admin}>
     <ul>
         <li>
             <Link to='/'>Startsida</Link>

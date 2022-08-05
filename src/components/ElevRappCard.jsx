@@ -1,6 +1,5 @@
 import ElevRappRow from "./ElevRappRow";
 
-
 const ElevRappCard = ({elever}) => {
 
 return (

@@ -4,7 +4,6 @@ import CreateForetag from "../components/CreateForetagCard";
 import CreatePeriod from "../components/CreatePeriodCard";
 import CreateHandledare from "../components/CreateHandledareCard";
 
-
 function CreatePage(){
   const { state } = useLocation();
   const typ = state.typ;

@@ -26,7 +26,7 @@ const CreatePresens = () => {
     const sendData = () => {
             let str="&datum="+elev.dag+"&status="+presens+"&pid="+elev.pid;
             console.log(str);
-            sendit(API_URL+str,'/','Cant create!');
+            sendit(API_URL+str,'/','Kan inte skapa närvaro!');
     }
     useEffect(() => {
         sendData();

@@ -1,4 +1,3 @@
-
 export function checkData(arr,data) {
     let returnelement=true;
     data.forEach(element => {

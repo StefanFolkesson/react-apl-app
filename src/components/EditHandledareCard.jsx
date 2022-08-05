@@ -4,7 +4,6 @@ import { loadLS } from "./functions";
 import Login from '../pages/LoginPage';
 import MainNavigation from './layout/MainNavigation';
 
-
 const EditHandledare = () => {
     let navigate = useNavigate();
     const { state } = useLocation();
@@ -40,7 +39,7 @@ const EditHandledare = () => {
         if(data.status=="0"){
           navigate('/Handledare');
         } else if(data.status=="1") {
-            navigate('/Handledare',{state: { error: 'Cant edit Handledare'} });
+            navigate('/Handledare',{state: { error: 'Kan inte redigera Handledare'} });
         } else if(data.status=="2") {
           navigate('/Login');
         }

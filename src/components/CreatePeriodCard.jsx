@@ -13,7 +13,6 @@ const CreatePeriod = () => {
     const [hash,setHash] = useState(loadLS('hash'));
     const API_URL ="/APL-app/createdata.php?hash="+hash+"&loginnamn="+user+"&nyperiod";
 
-
     const handleChange = (e) => {
         let localperiod = [];
         localperiod[e.target.id]=e.target.value;
@@ -43,7 +42,7 @@ const CreatePeriod = () => {
                 
             });
             console.log(str);
-            sendit(API_URL+str,'/Perioder','Cant create!');
+            sendit(API_URL+str,'/Perioder','Kan inte skapa period!');
         }
         else {
             document.getElementById(answer).focus()
@@ -54,7 +53,6 @@ const CreatePeriod = () => {
         <div>
         {user=="null"||user==""||user=="undefined"?<Login />:<MainNavigation />}
         <div className='data' >
-       
             <div className="data">
             <label>
             periodnamn: 
@@ -65,7 +63,6 @@ const CreatePeriod = () => {
             <div className="data">
             <label>
             slut: <input type="date" value={period['slut']} id='slut' onChange={(e)=>handleChange(e)} />  </label></div>
-          
             <button>Avbryt</button>
             <button onClick={() => sendData()}>Skicka</button>
         </div>

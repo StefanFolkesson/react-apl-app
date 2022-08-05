@@ -4,9 +4,7 @@ import { loadLS } from "./functions";
 import Login from '../pages/LoginPage';
 import MainNavigation from './layout/MainNavigation';
 
-
 const EditPeriod = () => {
-
     let navigate = useNavigate();
     const { state } = useLocation();
     const period = state.period;
@@ -40,12 +38,11 @@ const EditPeriod = () => {
         if(data.status=="0"){
           navigate('/Perioder');
         } else if(data.status=="1") {
-            navigate('/Perioder',{state: { error: 'Cant edit Period'} });
+            navigate('/Perioder',{state: { error: 'Kan inte redigera Period'} });
         } else if(data.status=="2") {
           navigate('/Login');
         }
       }
-
 
     return        (
       <div>

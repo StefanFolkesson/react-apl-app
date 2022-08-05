@@ -35,7 +35,6 @@ const OplaceradeCard = () => {
     useEffect(()=>{
         setShowElever(elever.filter(elevFilter));
     },[pnr,fnamn,enamn,elever]);
-
     
     function elevFilter(elev){
         if( elev.pnr.includes(pnr)

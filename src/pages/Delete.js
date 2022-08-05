@@ -40,13 +40,11 @@ function DeletePage(){
         navigate('/'+typ);
     } else if(data.status==="1") {
         navigate('/'+typ, { state: { error: 'Element isnt deletable!'} });
-        // skall poppa upp ett felmeddelande. och stanna kvar... 
     } else if(data.status==="2") {
         navigate('/Login');
     }
     else {
       navigate('/'+typ, { state: { error: 'Something is really wrong!'} });
-
     }
   }
   return <div></div>

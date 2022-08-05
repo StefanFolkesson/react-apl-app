@@ -4,7 +4,6 @@ import { loadLS } from './functions';
 import Login from '../pages/LoginPage';
 import MainNavigation from './layout/MainNavigation';
 
-
 const CreateElev = () => {
     let navigate = useNavigate()
     const [elev, setElev] = useState([]);
@@ -22,48 +21,44 @@ const CreateElev = () => {
     }
 
     function checkData(arr,data) {
-            let returnelement=true;
-            data.forEach(element => {
-                console.log(arr[element]);
-                if(arr[element] == null){
-                    console.log("it is ffs null");
-                    returnelement = element;
-                }
-            });
-            return returnelement;
+        let returnelement=true;
+        data.forEach(element => {
+            console.log(arr[element]);
+            if(arr[element] == null){
+                console.log("it is ffs null");
+                returnelement = element;
+            }
+        });
+        return returnelement;
     }
-
-         const sendData = () => {
-            let dataarr=["pnr","fnamn","enamn","klass","epost"];
-            let answer=checkData(elev,dataarr);
-            console.log(answer);
-            if(answer == true){
+    const sendData = () => {
+        let dataarr=["pnr","fnamn","enamn","klass","epost"];
+        let answer=checkData(elev,dataarr);
+        console.log(answer);
+        if(answer == true){
             let str="";
             dataarr.forEach(element => {
-                str+="&"+element;
-                str+="="+elev[element];
-                
+            str+="&"+element;
+            str+="="+elev[element];
             });
             console.log(API_URL+str);
             sendit(API_URL+str);
-            }
-            else {
-                document.getElementById(answer).focus();
-            }
         }
-            const sendit = async (url) => { 
-              const response = await fetch(`${url}`);
-              const data = await response.json();
-              if(data.status=="0"){
-                navigate('/Elever');  
-              } else if(data.status=="1") {
-                // skall poppa upp ett felmeddelande. och stanna kvar... 
-              } else if(data.status=="2") {
-                navigate('/Login');
-              }
-            }
-        
-
+        else {
+            document.getElementById(answer).focus();
+        }
+    }
+    const sendit = async (url) => { 
+        const response = await fetch(`${url}`);
+        const data = await response.json();
+        if(data.status=="0"){
+            navigate('/Elever');  
+        } else if(data.status=="1") {
+            navigate('/Elever',{state:{error:'Kan inte skapa elev!'}});  
+        } else if(data.status=="2") {
+            navigate('/Login');
+        }
+    }
 
     return ( 
         <div>

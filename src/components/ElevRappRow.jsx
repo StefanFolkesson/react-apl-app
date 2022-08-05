@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { loadLS } from "./functions";
 
 const ElevRappRow = ({elev}) => {
-
     let css="statusOk";
     switch(elev.status){
         case "Ej registrerad":

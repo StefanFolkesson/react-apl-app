@@ -38,7 +38,6 @@ function Login(props){
       }
     }
 
-
   return (
 <div className="w200 listVy ">
     <div className="blank">

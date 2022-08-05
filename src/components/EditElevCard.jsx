@@ -4,7 +4,6 @@ import { loadLS } from "./functions";
 import Login from '../pages/LoginPage';
 import MainNavigation from './layout/MainNavigation';
 
-
 function EditElevCard(){
   let navigate = useNavigate();
   const { state } = useLocation();
@@ -46,7 +45,6 @@ function EditElevCard(){
         navigate('/Login');
       }
     }
-
  
     return (
       <div>

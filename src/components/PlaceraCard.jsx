@@ -7,9 +7,6 @@ import { loadLS } from "./functions";
 import MainNavigation from "./layout/MainNavigation";
 
 const PlaceraCard = () => {
-    // H'msta alla perioder
-    // Hämta alla Företag
-    // Lista elev med två dropboxes. )
     const { state } = useLocation();
     const pnr = state.pnr;
     let navigate= useNavigate();

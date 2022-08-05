@@ -13,7 +13,6 @@ const VisaPlaceradeCard = () => {
     const [foretagsnamn,setForetagsnamn] = useState("");
     const [elever,setElever] = useState([]);
     const [showElever,setShowElever] = useState([]);
-
     const API_URL ="/APL-app/readdata.php?hash="+hash+"&loginnamn="+user+"&ute";
     const sendData = () => {
         sendit(API_URL);

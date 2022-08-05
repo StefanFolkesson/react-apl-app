@@ -15,7 +15,6 @@ function VisaHandledarePage(){
   if(state!=null){
     error=state.error;
   }
-
   let navigate = useNavigate();
   const [handledare, setHandledare ] = useState([]);
   const startup = async () => { 

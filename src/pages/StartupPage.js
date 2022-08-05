@@ -13,12 +13,10 @@ function StartupPage(){
     let hash = loadLS('hash');
     const [elever, setElever ] = useState([]);
     const [eleverAll, setAllElever ] = useState([]);
-
     let error="";
     if(state!=null){
       error=state.error;
     }
-
 
     const getIdag = async () => { 
         let API_URL = "/APL-app/readdata.php?hash=";
@@ -79,7 +77,7 @@ function StartupPage(){
         Du är en admin
         Dessa elever är de som behöver rapporteras idag:
         <ElevRappCard elever={elever}/>
-
+        Dessa elever är ute på praktik just nu.
         <VisaPlaceradeCard />
     </div>
 </div>

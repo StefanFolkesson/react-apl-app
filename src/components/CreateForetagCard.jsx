@@ -13,7 +13,6 @@ const CreateForetag = () => {
     const [hash,setHash] = useState(loadLS('hash'));
     const API_URL ="/APL-app/createdata.php?hash="+hash+"&loginnamn="+user+"&nyttforetag";
 
-
     const handleChange = (e) => {
         let localftg = [];
         localftg[e.target.id]=e.target.value;
@@ -22,7 +21,7 @@ const CreateForetag = () => {
             ...localftg
         })) 
     }
-    const sendit = async (url,returnAddr,errorMsg) => { 
+    const sendit = async (url,returnAddr,errorMsg) => {    // Vill ha denna global.... 
         const response = await fetch(`${url}`);
         const data = await response.json();
         if(data.status=="0"){
@@ -44,7 +43,7 @@ const CreateForetag = () => {
                 str+="="+ftg[element];
                 
             });
-            sendit(API_URL+str,'/Foretag','Cant create!');
+            sendit(API_URL+str,'/Foretag','Kan inte skapa företag!');
         }
         else {
             document.getElementById(answer).focus()

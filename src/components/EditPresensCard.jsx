@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate } from "react-router-dom";
 import { loadLS } from './functions';
 
-
 const EditPresens = () => {
     let navigate = useNavigate();
     const { state } = useLocation();
@@ -27,7 +26,7 @@ const EditPresens = () => {
     const sendData = () => {
             let str="&datum="+elev.dag+"&status="+presens+"&pid="+elev.pid;
             console.log(str);
-            sendit(API_URL+str,'/','Cant Update!');
+            sendit(API_URL+str,'/','Kan inte uppdatera närvaro!');
     }
     useEffect(() => {
         sendData();

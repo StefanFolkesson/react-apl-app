@@ -13,7 +13,6 @@ const CreateHandledare = () => {
     const [hash,setHash] = useState(loadLS('hash'));
     const API_URL ="/APL-app/createdata.php?hash="+hash+"&loginnamn="+user+"&nyhandledare";
 
-
     const handleChange = (e) => {
         let localhandledare = [];
         localhandledare[e.target.id]=e.target.value;
@@ -42,10 +41,9 @@ const CreateHandledare = () => {
             dataarr.forEach(element => {
                 str+="&"+element;
                 str+="="+handledare[element];
-                
             });
             console.log(str);
-            sendit(API_URL+str,'/Handledare','Cant create!');
+            sendit(API_URL+str,'/Handledare','Kan inte skapa handledare!');
         }
         else {
             document.getElementById(answer).focus()
