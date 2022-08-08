@@ -49,7 +49,7 @@ function StartupPage(){
     if(admin==0){
         return (
 <div>
-    {user==="null"||user===""||user==="undefined"?<Login />:<MainNavigation />}
+    {user==="null"||user===""||user==="undefined"?<Login />:<div><MainNavigation />
     <div className="listVy w100">
     <div className="error">{error}</div>
     <div>Förstasida</div>
@@ -62,14 +62,14 @@ function StartupPage(){
     <ElevRappCard elever={elever}/>
     Och här är rapporteringen hittils:
     <ElevRappCard elever={eleverAll}/>
-</div>
+</div></div>}
 </div>
         );
     }
     else {
         return (
 <div>
-    {user==="null"||user===""||user==="undefined"?<Login />:<MainNavigation />}
+    {user==="null"||user===""||user==="undefined"?<Login />:<div><MainNavigation />
     <div className="listVy w100">
     <div className="error">{error}</div>
     <div>Förstasida</div>
@@ -80,7 +80,7 @@ function StartupPage(){
         Dessa elever är ute på praktik just nu.
         <VisaPlaceradeCard />
     </div>
-</div>
+</div></div>}
 </div>
         )
     }
